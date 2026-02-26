@@ -26,14 +26,31 @@
         <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
             <div class="flex items-center gap-3">
                 <img src="logo1.png" alt="Logo" class="w-12 h-12 rounded-full border-2 border-purple-100 object-cover">
-                <div class="font-bold text-purple-800 text-xl italic tracking-tighter">ICE KULCOOL</div>
+                <div class="font-bold text-purple-800 text-xl italic tracking-tighter uppercase">ICE KULCOOL</div>
             </div>
+            
             <div class="hidden md:flex space-x-6 text-gray-600 font-medium">
                 <a href="#home" class="hover:text-purple-600 transition">Beranda</a>
                 <a href="#about" class="hover:text-purple-600 transition">Tentang Kami</a>
-                <a href="galeri.html" class="hover:text-purple-600 transition">Galeri</a> <a href="#menu" class="hover:text-purple-600 transition">Harga</a>
+                <a href="galeri.html" class="hover:text-purple-600 transition">Galeri</a> 
+                <a href="#menu" class="hover:text-purple-600 transition">Harga</a>
             </div>
-            <a href="https://wa.me/6285703393720" class="bg-green-500 text-white px-5 py-2 rounded-full text-sm font-bold hover:bg-green-600 shadow-md">Hubungi Kami</a>
+
+            <div class="md:hidden">
+                <button id="hamburger-btn" class="text-purple-800 focus:outline-none">
+                    <i class="fa-solid fa-bars text-2xl"></i>
+                </button>
+            </div>
+
+            <a href="https://wa.me/6285703393720" class="hidden md:block bg-green-500 text-white px-5 py-2 rounded-full text-sm font-bold hover:bg-green-600 shadow-md">Hubungi Kami</a>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 py-4 px-6 space-y-4 shadow-lg">
+            <a href="#home" class="block text-gray-700 font-semibold hover:text-purple-600">Beranda</a>
+            <a href="#about" class="block text-gray-700 font-semibold hover:text-purple-600">Tentang Kami</a>
+            <a href="galeri.html" class="block text-gray-700 font-semibold hover:text-purple-600">Galeri</a>
+            <a href="#menu" class="block text-gray-700 font-semibold hover:text-purple-600">Harga</a>
+            <a href="https://wa.me/6285703393720" class="block w-full text-center bg-green-500 text-white py-2 rounded-lg font-bold">Pesan Lewat WA</a>
         </div>
     </nav>
 
@@ -55,7 +72,7 @@
                 </div>
             </div>
             <div>
-                <h2 class="text-3xl font-bold text-purple-900 mb-6 border-l-4 border-purple-600 pl-4">Kenapa Harus Ice Kulcool?</h2>
+                <h2 class="text-3xl font-bold text-purple-900 mb-6 border-l-4 border-purple-600 pl-4 uppercase">Kenapa Harus Ice Kulcool?</h2>
                 <p class="text-gray-600 mb-6 leading-relaxed text-lg italic">Kami menghadirkan sensasi makan pisang cokelat yang berbeda. Pisang pilihan berkualitas tinggi dibalut dengan cokelat premium yang lumer sempurna di setiap gigitan.</p>
                 <ul class="space-y-3">
                     <li class="flex items-center gap-2 font-semibold text-purple-800 underline decoration-yellow-400">✓ Cokelat Premium Melimpah (Gak pelit!)</li>
@@ -67,7 +84,7 @@
     </section>
 
     <section id="menu" class="bg-purple-50 py-20 px-4">
-        <h2 class="text-3xl font-bold text-center text-purple-900 mb-12">Daftar Harga</h2>
+        <h2 class="text-3xl font-bold text-center text-purple-900 mb-12 uppercase">Daftar Harga</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             <div class="card bg-white p-6 shadow-xl border-t-4 border-purple-600 text-center">
                 <h3 class="font-bold text-xl mb-2 italic">Harga Normal</h3>
@@ -110,7 +127,7 @@
                 <p>Komplek Griya Bandung Indah Blok F 19 Nomor 10 LT 2, Buahbatu, Kec. Bojongsoang, Kota Bandung, Jawa Barat 40287</p>
             </div>
 
-            <p class="mb-8">Piscok Frozen Lumer Terpercaya. Rasa Mewah, Harga Ramah!</p>
+            <p class="mb-8 text-xs">Piscok Frozen Lumer Terpercaya. Rasa Mewah, Harga Ramah!</p>
             <div class="text-[10px] uppercase tracking-widest text-gray-400">
                 © 2026 Ice Kulcool Indonesia. All Rights Reserved.
             </div>
@@ -120,6 +137,23 @@
     <a href="https://wa.me/6285703393720" class="fixed bottom-6 right-6 z-[100] flex items-center justify-center w-14 h-14 bg-green-500 text-white rounded-full shadow-2xl hover:bg-green-600 transition pulse">
         <i class="fa-brands fa-whatsapp text-3xl"></i>
     </a>
+
+    <script>
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        hamburgerBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Menutup menu otomatis jika salah satu link diklik
+        const links = mobileMenu.querySelectorAll('a');
+        links.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+    </script>
 
 </body>
 </html>
