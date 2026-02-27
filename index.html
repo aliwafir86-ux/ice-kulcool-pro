@@ -4,15 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ice Kulcool - Piscok Lumer Premium</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        /* Mengatur font ke seluruh halaman */
+        body { font-family: 'Montserrat', sans-serif; }
+        
         .purple-gradient { background: linear-gradient(135deg, #6a1b9a 0%, #4a148c 100%); }
-        .card { border-radius: 20px; transition: 0.3s; }
+        
+        /* Modifikasi Card agar tidak terlalu besar */
+        .card { 
+            border-radius: 20px; 
+            transition: 0.3s; 
+            max-width: 320px; /* Batasi lebar maksimal kartu */
+            margin: 0 auto;   /* Pusatkan kartu */
+        }
         .card:hover { transform: translateY(-5px); }
+        
         html { scroll-behavior: smooth; }
         
-        /* Animasi berdenyut untuk tombol WA mengambang */
         .pulse { animation: pulse-animation 2s infinite; }
         @keyframes pulse-animation {
             0% { box-shadow: 0 0 0 0px rgba(34, 197, 94, 0.7); }
@@ -85,50 +96,50 @@
 
     <section id="menu" class="bg-purple-50 py-20 px-4">
         <h2 class="text-3xl font-bold text-center text-purple-900 mb-12 uppercase">Daftar Harga</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            <div class="card bg-white p-6 shadow-xl border-t-4 border-purple-600 text-center">
-                <h3 class="font-bold text-xl mb-2 italic">Harga Normal</h3>
-                <p class="text-3xl font-black text-purple-700 mb-4">Rp 2.000</p>
-                <ul class="text-gray-500 mb-6 space-y-2 text-sm">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+            
+            <div class="card bg-white p-5 shadow-xl border-t-4 border-purple-600 text-center">
+                <h3 class="font-bold text-lg mb-2 italic">Harga Normal</h3>
+                <p class="text-2xl font-black text-purple-700 mb-3">Rp 2.000</p>
+                <ul class="text-gray-500 mb-5 space-y-1 text-xs">
                     <li>1 Tusuk Piscok Original</li>
                     <li>Cokelat Lumer Klasik</li>
                     <li>Kemasan Plastik Tebal</li>
                 </ul>
-                <a href="https://wa.me/6285703393720?text=Hallo%20mincool%20Saya%20mau%20beli%20es%20kulkul." class="block bg-purple-100 text-purple-700 py-2 rounded-lg font-bold hover:bg-purple-200 transition">Beli Sekarang</a>
+                <a href="https://wa.me/6285703393720?text=Hallo%20mincool%20Saya%20mau%20beli%20es%20kulkul." class="block bg-purple-100 text-purple-700 py-2 rounded-lg text-sm font-bold hover:bg-purple-200 transition">Beli Sekarang</a>
             </div>
 
-            <div class="card bg-white p-6 shadow-2xl border-t-4 border-yellow-500 text-center scale-105 relative z-10">
-                <span class="bg-yellow-500 text-white text-xs px-3 py-1 rounded-full uppercase font-bold absolute -top-3 left-1/2 -translate-x-1/2 shadow-md">Terlaris</span>
-                <h3 class="font-bold text-xl mt-2 mb-2 italic underline decoration-purple-500">Paket Hemat</h3>
-                <p class="text-3xl font-black text-purple-700 mb-4">Rp 5.000</p>
-                <ul class="text-gray-500 mb-6 space-y-2 text-sm">
+            <div class="card bg-white p-5 shadow-2xl border-t-4 border-yellow-500 text-center scale-105 relative z-10">
+                <span class="bg-yellow-500 text-white text-[10px] px-2 py-1 rounded-full uppercase font-bold absolute -top-3 left-1/2 -translate-x-1/2 shadow-md">Terlaris</span>
+                <h3 class="font-bold text-lg mt-2 mb-2 italic underline decoration-purple-500">Paket Hemat</h3>
+                <p class="text-2xl font-black text-purple-700 mb-3">Rp 5.000</p>
+                <ul class="text-gray-500 mb-5 space-y-1 text-xs">
                     <li>3 Tusuk Piscok Mix</li>
                     <li>Topping Springkle/Kacang</li>
                 </ul>
-                <a href="https://wa.me/6285703393720?text=Hallo%20mincool%20Saya%20mau%20beli%20es%20kulkul%20Paket%20Hemat%20Rp%205.000%20dapat%203%20tusuk." class="block bg-purple-600 text-white py-2 rounded-lg font-bold shadow-md hover:bg-purple-700 transition">Pesan Sekarang</a>
+                <a href="https://wa.me/6285703393720?text=Hallo%20mincool%20Saya%20mau%20beli%20es%20kulkul%20Paket%20Hemat%20Rp%205.000%20dapat%203%20tusuk." class="block bg-purple-600 text-white py-2 rounded-lg text-sm font-bold shadow-md hover:bg-purple-700 transition">Pesan Sekarang</a>
             </div>
 
-            <div class="card bg-white p-6 shadow-xl border-t-4 border-purple-600 text-center">
-                <h3 class="font-bold text-xl mb-2 italic">Paket Combo</h3>
-                <p class="text-3xl font-black text-purple-700 mb-4">Rp 10.000</p>
-                <ul class="text-gray-500 mb-6 space-y-2 text-sm">
+            <div class="card bg-white p-5 shadow-xl border-t-4 border-purple-600 text-center">
+                <h3 class="font-bold text-lg mb-2 italic">Paket Combo</h3>
+                <p class="text-2xl font-black text-purple-700 mb-3">Rp 10.000</p>
+                <ul class="text-gray-500 mb-5 space-y-1 text-xs">
                     <li>6 Tusuk Piscok</li>
                     <li>Bebas Pilih Semua Topping</li>
                 </ul>
-                <a href="https://wa.me/6285703393720?text=Hallo%20mincool%20Saya%20mau%20beli%20es%20kulkul%20Paket%20Combo%20Rp%2010.000%20dapat%206%20tusuk." class="block bg-purple-100 text-purple-700 py-2 rounded-lg font-bold hover:bg-purple-200 transition">Beli Sekarang</a>
+                <a href="https://wa.me/6285703393720?text=Hallo%20mincool%20Saya%20mau%20beli%20es%20kulkul%20Paket%20Combo%20Rp%2010.000%20dapat%206%20tusuk." class="block bg-purple-100 text-purple-700 py-2 rounded-lg text-sm font-bold hover:bg-purple-200 transition">Beli Sekarang</a>
             </div>
+
         </div>
     </section>
 
     <footer class="bg-white text-gray-500 py-12 text-center border-t border-gray-100">
         <div class="max-w-6xl mx-auto px-4">
             <div class="font-bold text-2xl mb-2 text-purple-800 italic uppercase">ICE KULCOOL</div>
-            
             <div class="mb-6 text-sm text-gray-600 max-w-md mx-auto leading-relaxed">
                 <p class="font-bold text-purple-700"><i class="fa-solid fa-location-dot"></i> Alamat:</p>
                 <p>Komplek Griya Bandung Indah Blok F 19 Nomor 10 LT 2, Buahbatu, Kec. Bojongsoang, Kota Bandung, Jawa Barat 40287</p>
             </div>
-
             <p class="mb-8 text-xs">Piscok Frozen Lumer Terpercaya. Rasa Mewah, Harga Ramah!</p>
             <div class="text-[10px] uppercase tracking-widest text-gray-400">
                 © 2026 Ice Kulcool Indonesia. All Rights Reserved.
