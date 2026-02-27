@@ -1,95 +1,187 @@
-<header class="bg-white border-b sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-        <div class="flex items-center gap-4">
-            <img src="logo1.png" alt="Logo" class="w-14 h-14 object-contain">
-            <div class="hidden sm:block">
-                <span class="block text-xl font-extrabold tracking-widest text-purple-900 uppercase">ICE KULCOOL</span>
-                <span class="text-[10px] tracking-[0.3em] text-gray-400 uppercase">Premium Chocolate Treats</span>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ice Kulcool - Passion for Premium Chocolate</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * { font-family: 'Montserrat', sans-serif; }
+        html { scroll-behavior: smooth; }
+        
+        .nav-link {
+            position: relative;
+            font-weight: 500;
+            color: #4a148c;
+            transition: 0.3s;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #7b1fa2;
+            transition: 0.3s;
+        }
+        .nav-link:hover::after { width: 100%; }
+
+        /* Hero Image - Dengan warna cadangan agar tidak putih polos jika gambar error */
+        .hero-bg {
+            background: linear-gradient(rgba(74, 20, 140, 0.6), rgba(74, 20, 140, 0.6)), #4a148c url('piscok2.png');
+            background-size: cover;
+            background-position: center;
+            height: 80vh;
+        }
+
+        .product-card {
+            border: 1px solid #eee;
+            transition: all 0.4s ease;
+        }
+        .product-card:hover {
+            border-color: #7b1fa2;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        /* Mobile Menu Styles */
+        .mobile-nav-item {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            transition: 0.3s;
+            width: 100%;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .mobile-nav-item:hover { color: #facc15; }
+    </style>
+</head>
+<body class="bg-white text-gray-900">
+
+    <header class="bg-white border-b sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-4">
+                <img src="logo1.png" alt="Logo" class="w-12 h-12 object-contain">
+                <div class="hidden sm:block">
+                    <span class="block text-xl font-extrabold tracking-widest text-purple-900 uppercase">ICE KULCOOL</span>
+                    <span class="text-[10px] tracking-[0.3em] text-gray-400 uppercase">Premium Chocolate Treats</span>
+                </div>
+            </div>
+
+            <nav class="hidden md:flex space-x-10">
+                <a href="#home" class="nav-link">Beranda</a>
+                <a href="#about" class="nav-link">Tentang</a>
+                <a href="galeri.html" class="nav-link">Galeri</a>
+                <a href="#menu" class="nav-link">Harga</a>
+            </nav>
+
+            <div class="flex items-center gap-4">
+                <a href="https://wa.me/6285703393720" class="hidden md:block border-2 border-purple-800 text-purple-800 px-6 py-2 font-bold hover:bg-purple-800 hover:text-white transition-all uppercase text-xs tracking-widest">
+                    Contact Us
+                </a>
+                <button id="menu-open" class="md:hidden text-purple-900 text-2xl p-2 focus:outline-none">
+                    <i class="fa-solid fa-bars-staggered"></i>
+                </button>
             </div>
         </div>
+    </header>
 
-        <nav class="hidden md:flex space-x-10">
-            <a href="#home" class="nav-link">Beranda</a>
-            <a href="#about" class="nav-link">Tentang</a>
-            <a href="galeri.html" class="nav-link">Galeri</a>
-            <a href="#menu" class="nav-link">Harga</a>
-        </nav>
+    <div id="mobile-overlay" class="fixed inset-0 bg-purple-900/95 z-[100] transform translate-x-full transition-transform duration-500 ease-in-out md:hidden">
+        <div class="flex flex-col h-full p-8">
+            <div class="flex justify-end mb-12">
+                <button id="menu-close" class="text-white text-4xl focus:outline-none">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <nav class="flex flex-col gap-4 items-start">
+                <a href="#home" class="mobile-nav-item">BERANDA</a>
+                <a href="#about" class="mobile-nav-item">TENTANG</a>
+                <a href="galeri.html" class="mobile-nav-item">GALERI</a>
+                <a href="#menu" class="mobile-nav-item">HARGA</a>
+                <a href="https://wa.me/6285703393720" class="mobile-nav-item text-yellow-400">CONTACT US</a>
+            </nav>
+            <div class="mt-auto pt-10 border-t border-purple-700">
+                <div class="flex gap-6 text-white text-2xl">
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+                    <a href="https://wa.me/6285703393720"><i class="fa-brands fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        <div class="flex items-center gap-4">
-            <a href="https://wa.me/6285703393720" class="hidden md:block border-2 border-purple-800 text-purple-800 px-6 py-2 font-bold hover:bg-purple-800 hover:text-white transition-all uppercase text-xs tracking-widest">
-                Contact Us
+    <section id="home" class="hero-bg flex items-center justify-center text-center text-white px-4">
+        <div class="max-w-3xl">
+            <h1 class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">THE ART OF MELTING CHOCOLATE</h1>
+            <p class="text-lg md:text-xl font-light mb-10 tracking-wide">Sensasi kemewahan piscok lumer premium untuk setiap gigitan Anda.</p>
+            <a href="#menu" class="bg-white text-purple-900 px-10 py-4 font-bold uppercase tracking-widest text-sm hover:bg-purple-100 transition shadow-2xl">
+                Explore Products
             </a>
-            
-            <button id="menu-open" class="md:hidden text-purple-900 text-2xl p-2 focus:outline-none">
-                <i class="fa-solid fa-bars-staggered"></i>
-            </button>
         </div>
-    </div>
-</header>
+    </section>
 
-<div id="mobile-overlay" class="fixed inset-0 bg-purple-900/95 z-[100] transform translate-x-full transition-transform duration-500 ease-in-out">
-    <div class="flex flex-col h-full p-8">
-        <div class="flex justify-end mb-12">
-            <button id="menu-close" class="text-white text-4xl focus:outline-none">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
+    <section id="about" class="py-20 px-6 bg-gray-50">
+        <div class="max-w-5xl mx-auto text-center">
+            <h2 class="text-sm font-bold text-purple-600 tracking-[0.4em] uppercase mb-4">Quality First</h2>
+            <h3 class="text-3xl font-bold text-gray-900 mb-6">Kenapa Memilih Ice Kulcool?</h3>
+            <p class="text-gray-500 leading-relaxed italic max-w-2xl mx-auto">
+                "Pisang pilihan matang sempurna dibalut dengan cokelat premium racikan khusus."
+            </p>
         </div>
+    </section>
 
-        <nav class="flex flex-col gap-6 items-start">
-            <a href="#home" class="mobile-nav-item">HOME</a>
-            <a href="#about" class="mobile-nav-item">ABOUT US</a>
-            <a href="galeri.html" class="mobile-nav-item">GALLERY</a>
-            <a href="#menu" class="mobile-nav-item">PRODUCTS</a>
-            <a href="https://wa.me/6285703393720" class="mobile-nav-item">CONTACT US</a>
-        </nav>
-
-        <div class="mt-auto pt-10 border-t border-purple-700">
-            <p class="text-purple-300 text-xs tracking-widest mb-4 uppercase">Follow Us</p>
-            <div class="flex gap-6 text-white text-2xl">
-                <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                <a href="#"><i class="fa-brands fa-tiktok"></i></a>
-                <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+    <section id="menu" class="py-20 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="product-card bg-white p-8 text-center rounded-xl">
+                    <h4 class="text-xl font-bold mb-2">HARGA NORMAL</h4>
+                    <p class="text-gray-500 text-sm mb-6">1 Tusuk Piscok Original</p>
+                    <span class="text-3xl font-black text-purple-800 block mb-6">Rp 2.000</span>
+                    <a href="https://wa.me/6285703393720" class="bg-purple-100 text-purple-800 py-3 px-6 rounded-lg font-bold block hover:bg-purple-800 hover:text-white transition">Beli Sekarang</a>
+                </div>
+                <div class="product-card bg-white p-8 text-center rounded-xl border-t-4 border-t-yellow-500 shadow-xl scale-105">
+                    <span class="bg-yellow-500 text-white text-[10px] px-3 py-1 rounded-full font-bold uppercase">Terlaris</span>
+                    <h4 class="text-xl font-bold mt-4 mb-2">PAKET HEMAT</h4>
+                    <p class="text-gray-500 text-sm mb-6">3 Tusuk Piscok Mix</p>
+                    <span class="text-3xl font-black text-purple-800 block mb-6">Rp 5.000</span>
+                    <a href="https://wa.me/6285703393720" class="bg-purple-600 text-white py-3 px-6 rounded-lg font-bold block hover:bg-purple-700 transition">Pesan Sekarang</a>
+                </div>
+                <div class="product-card bg-white p-8 text-center rounded-xl">
+                    <h4 class="text-xl font-bold mb-2">PAKET COMBO</h4>
+                    <p class="text-gray-500 text-sm mb-6">6 Tusuk Piscok Bebas Topping</p>
+                    <span class="text-3xl font-black text-purple-800 block mb-6">Rp 10.000</span>
+                    <a href="https://wa.me/6285703393720" class="bg-purple-100 text-purple-800 py-3 px-6 rounded-lg font-bold block hover:bg-purple-800 hover:text-white transition">Beli Sekarang</a>
+                </div>
             </div>
         </div>
-    </div>
-</div>
+    </section>
 
-<style>
-    /* Tambahkan di dalam <style> Anda */
-    .mobile-nav-item {
-        color: white;
-        font-size: 1.875rem; /* 3xl */
-        font-weight: 700;
-        letter-spacing: 0.1em;
-        transition: 0.3s;
-        border-left: 0px solid white;
-    }
-    .mobile-nav-item:hover {
-        padding-left: 1rem;
-        color: #facc15; /* Kuning aksen */
-    }
-</style>
+    <footer class="bg-gray-900 text-white py-12 px-6">
+        <div class="max-w-7xl mx-auto text-center">
+            <p class="text-sm text-gray-500">© 2026 Ice Kulcool Indonesia. All Rights Reserved.</p>
+        </div>
+    </footer>
 
-<script>
-    const menuOpen = document.getElementById('menu-open');
-    const menuClose = document.getElementById('menu-close');
-    const overlay = document.getElementById('mobile-overlay');
-    const links = document.querySelectorAll('.mobile-nav-item');
+    <a href="https://wa.me/6285703393720" class="fixed bottom-6 right-6 bg-green-500 text-white w-14 h-14 rounded-full flex items-center justify-center text-2xl shadow-2xl hover:bg-green-600 transition-all z-50">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
 
-    // Buka Menu
-    menuOpen.addEventListener('click', () => {
-        overlay.classList.remove('translate-x-full');
-    });
+    <script>
+        const menuOpen = document.getElementById('menu-open');
+        const menuClose = document.getElementById('menu-close');
+        const overlay = document.getElementById('mobile-overlay');
+        const links = document.querySelectorAll('.mobile-nav-item');
 
-    // Tutup Menu
-    menuClose.addEventListener('click', () => {
-        overlay.classList.add('translate-x-full');
-    });
-
-    // Otomatis tutup menu saat link diklik
-    links.forEach(link => {
-        link.addEventListener('click', () => {
-            overlay.classList.add('translate-x-full');
+        menuOpen.onclick = () => overlay.classList.remove('translate-x-full');
+        menuClose.onclick = () => overlay.classList.add('translate-x-full');
+        
+        links.forEach(link => {
+            link.onclick = () => overlay.classList.add('translate-x-full');
         });
-    });
-</script>
+    </script>
+</body>
+</html>
