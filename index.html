@@ -22,7 +22,7 @@
         .product-card {
             border: 1px solid #eee;
             transition: all 0.4s ease;
-            border-radius: 20px; /* Membuat kartu lebih halus */
+            border-radius: 20px;
         }
         .product-card:hover {
             border-color: #7b1fa2;
@@ -53,27 +53,56 @@
             transition: all 0.3s ease-in-out;
         }
 
-        /* Tombol Explore yang lebih elegan */
+        /* Tombol Explore Elegan & Rounded */
         .btn-elegant {
             background: white;
             color: #4a148c;
-            padding: 16px 40px;
+            padding: 16px 45px;
             border-radius: 9999px;
-            font-weight: 700;
+            font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 0.15em;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
             display: inline-block;
         }
         .btn-elegant:hover {
-            transform: scale(1.05);
+            transform: scale(1.1);
             background: #f3e5f5;
-            box-shadow: 0 15px 25px rgba(0,0,0,0.15);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+        }
+
+        /* --- IKON WA MELAYANG --- */
+        .wa-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        .wa-float:hover {
+            transform: scale(1.1) rotate(10deg);
+            background-color: #128c7e;
+            color: white;
         }
     </style>
 </head>
 <body class="bg-white text-gray-900">
+
+    <a href="https://wa.me/6285703393720" class="wa-float" target="_blank">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
 
     <header class="bg-white border-b sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-6 py-4 grid grid-cols-3 items-center">
@@ -152,7 +181,7 @@
                 <a href="#menu" data-key="nav-price" class="sidebar-nav-item">HARGA</a>
                 <hr class="my-4 border-gray-100">
                 <a href="https://wa.me/6285703393720" data-key="nav-contact" class="sidebar-nav-item text-green-600">
-                    <i class="fa-brands fa-whatsapp fa-lg mr-2"></i> HUBUNGI KAMI
+                    <i class="fa-brands fa-whatsapp mr-2"></i> HUBUNGI KAMI
                 </a>
             </nav>
         </div>
@@ -248,7 +277,7 @@
     </footer>
 
     <script>
-        // Data Bahasa
+        // Data Bahasa (Tetap)
         const languages = {
             'ID': {
                 'header-tagline': 'Camilan Cokelat Premium',
@@ -308,20 +337,16 @@
             }
         };
 
-        // Fungsi Ganti Bahasa
         function setLanguage(lang) {
             document.getElementById('current-lang').innerText = lang;
             const elements = document.querySelectorAll('[data-key]');
             elements.forEach(el => {
                 const key = el.getAttribute('data-key');
-                if (languages[lang][key]) {
-                    el.innerText = languages[lang][key];
-                }
+                if (languages[lang][key]) { el.innerText = languages[lang][key]; }
             });
             closeLang();
         }
 
-        // Sidebar Logic
         const menuOpen = document.getElementById('menu-open');
         const menuClose = document.getElementById('menu-close');
         const sidebar = document.getElementById('sidebar-menu');
@@ -345,7 +370,6 @@
         menuClose.onclick = closeSidebar;
         bgOverlay.onclick = closeSidebar;
 
-        // Language Modal Logic
         const langOpen = document.getElementById('lang-open');
         const langClose = document.getElementById('lang-close');
         const langOverlay = document.getElementById('lang-overlay');
@@ -353,9 +377,7 @@
 
         langOpen.onclick = () => {
             langOverlay.classList.remove('hidden');
-            setTimeout(() => {
-                langModal.classList.remove('scale-90', 'opacity-0');
-            }, 10);
+            setTimeout(() => langModal.classList.remove('scale-90', 'opacity-0'), 10);
         };
 
         const closeLang = () => {
@@ -364,7 +386,6 @@
         };
         langClose.onclick = closeLang;
 
-        // Search Logic
         const searchOpen = document.getElementById('search-open');
         const searchClose = document.getElementById('search-close');
         const searchOverlay = document.getElementById('search-overlay');
@@ -373,15 +394,9 @@
 
         const doSearch = () => {
             const keyword = searchInput.value.toLowerCase().trim();
-            if (keyword === 'galeri' || keyword === 'gallery') {
-                window.location.href = 'galeri.html';
-            } else if (keyword === 'harga' || keyword === 'price' || keyword === 'menu') {
-                window.location.href = '#menu';
-                closeSearch();
-            } else if (keyword === 'tentang' || keyword === 'about') {
-                window.location.href = '#about';
-                closeSearch();
-            }
+            if (keyword === 'galeri' || keyword === 'gallery') window.location.href = 'galeri.html';
+            else if (['harga', 'price', 'menu'].includes(keyword)) { window.location.href = '#menu'; closeSearch(); }
+            else if (['tentang', 'about'].includes(keyword)) { window.location.href = '#about'; closeSearch(); }
         };
 
         searchOpen.onclick = () => {
@@ -396,7 +411,7 @@
         };
         searchClose.onclick = closeSearch;
         btnSearch.onclick = doSearch;
-        searchInput.addEventListener('keypress', (e) => { if(e.key === 'Enter') doSearch(); });
+        searchInput.onkeypress = (e) => { if(e.key === 'Enter') doSearch(); };
     </script>
 </body>
 </html>
