@@ -12,7 +12,6 @@
         * { font-family: 'Montserrat', sans-serif; }
         html { scroll-behavior: smooth; }
         
-        /* Hero Styling */
         .hero-bg {
             background: linear-gradient(rgba(74, 20, 140, 0.4), rgba(74, 20, 140, 0.4)), url('piscok2.png');
             background-size: cover;
@@ -20,7 +19,6 @@
             height: 80vh;
         }
 
-        /* Product Card Styling */
         .product-card {
             border: 1px solid #eee;
             transition: all 0.4s ease;
@@ -30,7 +28,6 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.05);
         }
 
-        /* Sidebar Nav Styling */
         .sidebar-nav-item {
             color: #4a148c;
             font-size: 1.1rem;
@@ -46,20 +43,12 @@
             color: #7b1fa2;
         }
         
-        /* Lock scroll when menu open */
         body.menu-open {
             overflow: hidden;
         }
 
-        /* Modal Animation */
-        .modal-enter {
-            opacity: 0;
-            transform: scale(0.9);
-        }
-        .modal-enter-active {
-            opacity: 1;
-            transform: scale(1);
-            transition: opacity 0.3s, transform 0.3s;
+        .modal-transition {
+            transition: all 0.3s ease-in-out;
         }
     </style>
 </head>
@@ -76,11 +65,11 @@
             <div class="flex flex-col items-center text-center">
                 <img src="logo1.png" alt="Logo" class="w-12 h-12 object-contain">
                 <span class="block text-lg font-extrabold tracking-widest text-purple-900 uppercase italic leading-none mt-1">ICE KULCOOL</span>
-                <span class="hidden sm:block text-[8px] tracking-[0.2em] text-gray-400 uppercase leading-none">Premium Chocolate Treats</span>
+                <span data-key="header-tagline" class="hidden sm:block text-[8px] tracking-[0.2em] text-gray-400 uppercase leading-none">Premium Chocolate Treats</span>
             </div>
 
             <div class="flex justify-end items-center space-x-6">
-                <button class="text-purple-900 hover:text-purple-600 transition">
+                <button id="search-open" class="text-purple-900 hover:text-purple-600 transition">
                     <i class="fa-solid fa-magnifying-glass text-lg"></i>
                 </button>
                 <button id="lang-open" class="flex items-center space-x-1 text-purple-900 font-bold text-xs uppercase tracking-widest hover:text-purple-600 transition">
@@ -91,10 +80,21 @@
         </div>
     </header>
 
+    <div id="search-overlay" class="fixed inset-0 bg-black/80 z-[120] hidden flex items-center justify-center p-6 modal-transition opacity-0">
+        <button id="search-close" class="absolute top-8 right-8 text-white text-3xl hover:text-purple-400"><i class="fa-solid fa-xmark"></i></button>
+        <div class="w-full max-w-2xl text-center">
+            <h2 data-key="search-title" class="text-white text-2xl font-bold mb-6 uppercase tracking-widest">Apa yang ingin Anda cari?</h2>
+            <div class="relative">
+                <input type="text" id="search-input" class="w-full bg-transparent border-b-2 border-white text-white text-3xl py-4 focus:outline-none focus:border-purple-500 placeholder-gray-500" placeholder="...">
+                <button class="absolute right-0 bottom-4 text-white text-2xl"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </div>
+        </div>
+    </div>
+
     <div id="lang-overlay" class="fixed inset-0 bg-black/60 z-[110] hidden flex items-center justify-center p-4">
-        <div id="lang-modal" class="bg-white w-full max-w-sm rounded-2xl shadow-2xl overflow-hidden transform transition-all">
+        <div id="lang-modal" class="bg-white w-full max-w-sm rounded-2xl shadow-2xl overflow-hidden transform scale-90 opacity-0 transition-all duration-300">
             <div class="p-6 border-b flex justify-between items-center">
-                <h3 class="font-bold text-purple-900 uppercase tracking-widest">Pilih Bahasa / Language</h3>
+                <h3 data-key="modal-lang-title" class="font-bold text-purple-900 uppercase tracking-widest">Pilih Bahasa</h3>
                 <button id="lang-close" class="text-gray-400 hover:text-red-500"><i class="fa-solid fa-xmark text-xl"></i></button>
             </div>
             <div class="p-4 flex flex-col gap-2">
@@ -103,14 +103,12 @@
                         <span class="mr-3 text-2xl">🇮🇩</span>
                         <span class="font-semibold text-gray-700">Bahasa Indonesia</span>
                     </div>
-                    <i class="fa-solid fa-circle-check text-purple-600 opacity-0 group-hover:opacity-100 transition"></i>
                 </button>
                 <button onclick="setLanguage('ENG')" class="flex items-center justify-between p-4 hover:bg-purple-50 rounded-xl transition group">
                     <div class="flex items-center">
                         <span class="mr-3 text-2xl">🇺🇸</span>
                         <span class="font-semibold text-gray-700">English (US)</span>
                     </div>
-                    <i class="fa-solid fa-circle-check text-purple-600 opacity-0 group-hover:opacity-100 transition"></i>
                 </button>
             </div>
         </div>
@@ -121,43 +119,38 @@
     <div id="sidebar-menu" class="fixed top-0 left-0 h-full w-72 bg-white z-[100] transform -translate-x-full transition-transform duration-300 ease-in-out shadow-2xl">
         <div class="flex flex-col h-full p-6">
             <div class="flex justify-between items-center mb-8 border-b pb-4">
-                <span class="font-bold text-purple-900 tracking-widest uppercase">Menu Navigasi</span>
+                <span data-key="nav-title" class="font-bold text-purple-900 tracking-widest uppercase">Menu Navigasi</span>
                 <button id="menu-close" class="text-gray-400 hover:text-purple-900 text-2xl">
                     <i class="fa-solid fa-xmark"></i>
                 </button>
             </div>
             <nav class="flex flex-col gap-1">
-                <a href="#home" class="sidebar-nav-item">BERANDA</a>
-                <a href="#about" class="sidebar-nav-item">TENTANG</a>
-                <a href="galeri.html" class="sidebar-nav-item">GALERI</a>
-                <a href="#menu" class="sidebar-nav-item">HARGA</a>
+                <a href="#home" data-key="nav-home" class="sidebar-nav-item">BERANDA</a>
+                <a href="#about" data-key="nav-about" class="sidebar-nav-item">TENTANG</a>
+                <a href="galeri.html" data-key="nav-gallery" class="sidebar-nav-item">GALERI</a>
+                <a href="#menu" data-key="nav-price" class="sidebar-nav-item">HARGA</a>
                 <hr class="my-4 border-gray-100">
-                <a href="https://wa.me/6285703393720" class="sidebar-nav-item text-green-600">
+                <a href="https://wa.me/6285703393720" data-key="nav-contact" class="sidebar-nav-item text-green-600">
                     <i class="fa-brands fa-whatsapp mr-2"></i> HUBUNGI KAMI
                 </a>
             </nav>
-            <div class="mt-auto text-center">
-                <p class="text-[10px] text-gray-400 uppercase tracking-widest">Ice Kulcool © 2026</p>
-            </div>
         </div>
     </div>
 
     <section id="home" class="hero-bg flex items-center justify-center text-center text-white px-4">
         <div class="max-w-3xl">
-            <h1 class="text-4xl md:text-6xl font-extrabold mb-6 uppercase leading-tight">The Art of Melting Chocolate</h1>
-            <p class="text-lg md:text-xl font-light mb-10 tracking-wide">Menghadirkan sensasi kemewahan piscok lumer premium dengan kualitas bahan terbaik untuk setiap gigitan Anda.</p>
-            <a href="#menu" class="bg-white text-purple-900 px-10 py-4 font-bold uppercase tracking-widest text-sm hover:bg-purple-100 transition shadow-2xl">
-                Explore Products
-            </a>
+            <h1 data-key="hero-title" class="text-4xl md:text-6xl font-extrabold mb-6 uppercase leading-tight">The Art of Melting Chocolate</h1>
+            <p data-key="hero-desc" class="text-lg md:text-xl font-light mb-10 tracking-wide">Menghadirkan sensasi kemewahan piscok lumer premium dengan kualitas bahan terbaik untuk setiap gigitan Anda.</p>
+            <a href="#menu" data-key="hero-btn" class="bg-white text-purple-900 px-10 py-4 font-bold uppercase tracking-widest text-sm hover:bg-purple-100 transition shadow-2xl">Explore Products</a>
         </div>
     </section>
 
     <section id="about" class="py-24 px-6 bg-gray-50">
         <div class="max-w-5xl mx-auto text-center">
-            <h2 class="text-sm font-bold text-purple-600 tracking-[0.4em] uppercase mb-4">Quality First</h2>
-            <h3 class="text-3xl md:text-4xl font-bold text-gray-900 mb-8">Kenapa Memilih Ice Kulcool?</h3>
+            <h2 data-key="about-tag" class="text-sm font-bold text-purple-600 tracking-[0.4em] uppercase mb-4">Quality First</h2>
+            <h3 data-key="about-title" class="text-3xl md:text-4xl font-bold text-gray-900 mb-8">Kenapa Memilih Ice Kulcool?</h3>
             <div class="h-1 w-20 bg-purple-600 mx-auto mb-10"></div>
-            <p class="text-gray-500 leading-relaxed text-lg max-w-3xl mx-auto italic">
+            <p data-key="about-desc" class="text-gray-500 leading-relaxed text-lg max-w-3xl mx-auto italic">
                 "Kami percaya bahwa kebahagiaan dimulai dari bahan yang berkualitas. Pisang pilihan yang matang sempurna dibalut dengan cokelat premium racikan khusus, menciptakan harmoni rasa yang tak terlupakan."
             </p>
         </div>
@@ -167,47 +160,44 @@
         <div class="max-w-7xl mx-auto">
             <div class="flex flex-col md:flex-row justify-between items-end mb-16 border-b pb-8">
                 <div>
-                    <h2 class="text-sm font-bold text-purple-600 tracking-[0.4em] uppercase mb-2">Our Menu</h2>
-                    <h3 class="text-4xl font-extrabold text-gray-900 uppercase">Varian Paket Kami</h3>
+                    <h2 data-key="menu-tag" class="text-sm font-bold text-purple-600 tracking-[0.4em] uppercase mb-2">Our Menu</h2>
+                    <h3 data-key="menu-title" class="text-4xl font-extrabold text-gray-900 uppercase">Varian Paket Kami</h3>
                 </div>
-                <p class="text-gray-400 max-w-xs text-right hidden md:block">Pilihan paket fleksibel untuk dinikmati bersama teman dan keluarga.</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
                 <div class="product-card bg-white p-8 group">
                     <div class="w-full h-48 bg-gray-100 mb-6 flex items-center justify-center">
-                        <i class="fa-solid fa-ice-cream text-6xl text-purple-200 group-hover:text-purple-400 transition-colors"></i>
+                        <i class="fa-solid fa-ice-cream text-6xl text-purple-200"></i>
                     </div>
-                    <h4 class="text-xl font-bold mb-2 uppercase">Harga Normal</h4>
-                    <p class="text-gray-500 text-sm mb-6">Nikmati keaslian rasa piscok original dengan balutan cokelat klasik yang melimpah.</p>
+                    <h4 data-key="card1-name" class="text-xl font-bold mb-2 uppercase">Harga Normal</h4>
+                    <p data-key="card1-desc" class="text-gray-500 text-sm mb-6">Nikmati keaslian rasa piscok original dengan balutan cokelat klasik yang melimpah.</p>
                     <div class="flex justify-between items-center">
                         <span class="text-2xl font-black text-purple-800">Rp 2.000</span>
-                        <a href="https://wa.me/6285703393720?text=Hallo%20mincool%20Saya%20mau%20beli%20es%20kulkul." class="text-purple-600 font-bold text-xs uppercase tracking-widest border-b-2 border-purple-600">Buy Now</a>
+                        <a href="#" data-key="buy-btn" class="text-purple-600 font-bold text-xs uppercase border-b-2 border-purple-600">Buy Now</a>
                     </div>
                 </div>
-
-                <div class="product-card bg-white p-8 group relative overflow-hidden">
+                <div class="product-card bg-white p-8 group relative overflow-hidden border-2 border-purple-200">
                     <div class="absolute top-4 right-[-35px] bg-purple-600 text-white text-[10px] py-1 px-10 rotate-45 font-bold uppercase">Best Seller</div>
                     <div class="w-full h-48 bg-gray-100 mb-6 flex items-center justify-center">
-                        <i class="fa-solid fa-fire text-6xl text-purple-200 group-hover:text-purple-400 transition-colors"></i>
+                        <i class="fa-solid fa-fire text-6xl text-purple-200"></i>
                     </div>
-                    <h4 class="text-xl font-bold mb-2 uppercase">Paket Hemat</h4>
-                    <p class="text-gray-500 text-sm mb-6">Dapatkan 3 tusuk piscok mix dengan topping kacang sangrai atau springkle warna-warni.</p>
+                    <h4 data-key="card2-name" class="text-xl font-bold mb-2 uppercase">Paket Hemat</h4>
+                    <p data-key="card2-desc" class="text-gray-500 text-sm mb-6">Dapatkan 3 tusuk piscok mix dengan topping kacang sangrai atau springkle warna-warni.</p>
                     <div class="flex justify-between items-center">
                         <span class="text-2xl font-black text-purple-800">Rp 5.000</span>
-                        <a href="https://wa.me/6285703393720?text=Hallo%20mincool%20Saya%20mau%20beli%20es%20kulkul%20Paket%20Hemat%20Rp%205.000%20dapat%203%20tusuk." class="text-purple-600 font-bold text-xs uppercase tracking-widest border-b-2 border-purple-600">Buy Now</a>
+                        <a href="#" data-key="buy-btn" class="text-purple-600 font-bold text-xs uppercase border-b-2 border-purple-600">Buy Now</a>
                     </div>
                 </div>
-
                 <div class="product-card bg-white p-8 group">
                     <div class="w-full h-48 bg-gray-100 mb-6 flex items-center justify-center">
-                        <i class="fa-solid fa-box-open text-6xl text-purple-200 group-hover:text-purple-400 transition-colors"></i>
+                        <i class="fa-solid fa-box-open text-6xl text-purple-200"></i>
                     </div>
-                    <h4 class="text-xl font-bold mb-2 uppercase">Paket Combo</h4>
-                    <p class="text-gray-500 text-sm mb-6">Pesta piscok dengan 6 tusuk bebas pilih topping sesukamu. Lebih banyak, lebih seru!</p>
+                    <h4 data-key="card3-name" class="text-xl font-bold mb-2 uppercase">Paket Combo</h4>
+                    <p data-key="card3-desc" class="text-gray-500 text-sm mb-6">Pesta piscok dengan 6 tusuk bebas pilih topping sesukamu. Lebih banyak, lebih seru!</p>
                     <div class="flex justify-between items-center">
                         <span class="text-2xl font-black text-purple-800">Rp 10.000</span>
-                        <a href="https://wa.me/6285703393720?text=Hallo%20mincool%20Saya%20mau%20beli%20es%20kulkul%20Paket%20Combo%20Rp%2010.000%20dapat%206%20tusuk." class="text-purple-600 font-bold text-xs uppercase tracking-widest border-b-2 border-purple-600">Buy Now</a>
+                        <a href="#" data-key="buy-btn" class="text-purple-600 font-bold text-xs uppercase border-b-2 border-purple-600">Buy Now</a>
                     </div>
                 </div>
             </div>
@@ -215,43 +205,108 @@
     </section>
 
     <footer class="bg-gray-900 text-white py-20 px-6">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-16">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-16 text-center md:text-left">
             <div>
                 <h4 class="text-xl font-extrabold tracking-widest mb-6 uppercase">ICE KULCOOL.</h4>
-                <p class="text-gray-400 text-sm leading-relaxed">Kami berdedikasi untuk memberikan pengalaman menikmati jajanan tradisional dengan standar kualitas internasional.</p>
+                <p data-key="footer-desc" class="text-gray-400 text-sm leading-relaxed">Kami berdedikasi untuk memberikan pengalaman menikmati jajanan tradisional dengan standar kualitas internasional.</p>
             </div>
             <div>
-                <h4 class="text-sm font-bold uppercase tracking-widest mb-6 border-l-4 border-purple-600 pl-4">Contact Info</h4>
-                <p class="text-gray-400 text-sm mb-4"><i class="fa-solid fa-location-dot text-purple-500 mr-2"></i> Buahbatu, Kec. Bojongsoang, Bandung</p>
+                <h4 data-key="footer-contact-title" class="text-sm font-bold uppercase tracking-widest mb-6 border-l-4 border-purple-600 pl-4">Contact Info</h4>
+                <p class="text-gray-400 text-sm mb-4"><i class="fa-solid fa-location-dot text-purple-500 mr-2"></i> Buahbatu, Bandung</p>
                 <p class="text-gray-400 text-sm"><i class="fa-solid fa-phone text-purple-500 mr-2"></i> +62 857 0339 3720</p>
             </div>
             <div>
                 <h4 class="text-sm font-bold uppercase tracking-widest mb-6 border-l-4 border-purple-600 pl-4">Follow Us</h4>
-                <div class="flex space-x-6 text-2xl">
+                <div class="flex justify-center md:justify-start space-x-6 text-2xl">
                     <a href="#" class="hover:text-purple-400 transition"><i class="fa-brands fa-instagram"></i></a>
                     <a href="#" class="hover:text-purple-400 transition"><i class="fa-brands fa-tiktok"></i></a>
                     <a href="#" class="hover:text-purple-400 transition"><i class="fa-brands fa-whatsapp"></i></a>
                 </div>
             </div>
         </div>
-        <div class="max-w-7xl mx-auto border-t border-gray-800 mt-20 pt-10 text-[10px] text-gray-500 uppercase tracking-[0.2em]">
-            <p>© 2026 Ice Kulcool Indonesia. All Rights Reserved.</p>
-        </div>
     </footer>
 
-    <a href="https://wa.me/6285703393720" class="fixed bottom-10 right-10 bg-green-500 text-white w-16 h-16 rounded-full flex items-center justify-center text-3xl shadow-2xl hover:bg-green-600 transition-all z-[110]">
-        <i class="fa-brands fa-whatsapp"></i>
-    </a>
-
     <script>
+        // Data Bahasa
+        const languages = {
+            'ID': {
+                'header-tagline': 'Camilan Cokelat Premium',
+                'search-title': 'Apa yang ingin Anda cari?',
+                'modal-lang-title': 'Pilih Bahasa',
+                'nav-title': 'Menu Navigasi',
+                'nav-home': 'BERANDA',
+                'nav-about': 'TENTANG',
+                'nav-gallery': 'GALERI',
+                'nav-price': 'HARGA',
+                'nav-contact': 'HUBUNGI KAMI',
+                'hero-title': 'Seni Cokelat yang Meleleh',
+                'hero-desc': 'Menghadirkan sensasi kemewahan piscok lumer premium dengan kualitas bahan terbaik untuk setiap gigitan Anda.',
+                'hero-btn': 'Lihat Produk',
+                'about-tag': 'Kualitas Utama',
+                'about-title': 'Kenapa Memilih Ice Kulcool?',
+                'about-desc': '"Kami percaya bahwa kebahagiaan dimulai dari bahan yang berkualitas. Pisang pilihan yang matang sempurna dibalut dengan cokelat premium."',
+                'menu-tag': 'Menu Kami',
+                'menu-title': 'Varian Paket Kami',
+                'card1-name': 'Harga Normal',
+                'card1-desc': 'Nikmati keaslian rasa piscok original dengan balutan cokelat klasik yang melimpah.',
+                'card2-name': 'Paket Hemat',
+                'card2-desc': 'Dapatkan 3 tusuk piscok mix dengan topping kacang sangrai atau springkle.',
+                'card3-name': 'Paket Combo',
+                'card3-desc': 'Pesta piscok dengan 6 tusuk bebas pilih topping sesukamu. Lebih seru!',
+                'buy-btn': 'Beli Sekarang',
+                'footer-desc': 'Kami berdedikasi memberikan jajanan tradisional kualitas internasional.',
+                'footer-contact-title': 'Info Kontak'
+            },
+            'ENG': {
+                'header-tagline': 'Premium Chocolate Treats',
+                'search-title': 'What are you looking for?',
+                'modal-lang-title': 'Select Language',
+                'nav-title': 'Navigation Menu',
+                'nav-home': 'HOME',
+                'nav-about': 'ABOUT',
+                'nav-gallery': 'GALLERY',
+                'nav-price': 'PRICE',
+                'nav-contact': 'CONTACT US',
+                'hero-title': 'The Art of Melting Chocolate',
+                'hero-desc': 'Bringing the sensation of luxury premium melted chocolate banana with the best quality ingredients for your every bite.',
+                'hero-btn': 'Explore Products',
+                'about-tag': 'Quality First',
+                'about-title': 'Why Choose Ice Kulcool?',
+                'about-desc': '"We believe that happiness starts from quality ingredients. Perfectly ripe selected bananas wrapped in premium chocolate."',
+                'menu-tag': 'Our Menu',
+                'menu-title': 'Our Package Variants',
+                'card1-name': 'Normal Price',
+                'card1-desc': 'Enjoy the authenticity of original chocolate banana with abundant classic chocolate coating.',
+                'card2-name': 'Saving Pack',
+                'card2-desc': 'Get 3 mixed chocolate banana sticks with roasted peanuts or sprinkles topping.',
+                'card3-name': 'Combo Pack',
+                'card3-desc': 'Chocolate banana party with 6 sticks, free to choose any topping you like!',
+                'buy-btn': 'Buy Now',
+                'footer-desc': 'Dedicated to providing traditional snacks with international quality standards.',
+                'footer-contact-title': 'Contact Info'
+            }
+        };
+
+        // Fungsi Ganti Bahasa
+        function setLanguage(lang) {
+            document.getElementById('current-lang').innerText = lang;
+            const elements = document.querySelectorAll('[data-key]');
+            elements.forEach(el => {
+                const key = el.getAttribute('data-key');
+                if (languages[lang][key]) {
+                    el.innerText = languages[lang][key];
+                }
+            });
+            closeLang();
+        }
+
         // Sidebar Logic
         const menuOpen = document.getElementById('menu-open');
         const menuClose = document.getElementById('menu-close');
         const sidebar = document.getElementById('sidebar-menu');
         const bgOverlay = document.getElementById('bg-overlay');
-        const links = document.querySelectorAll('.sidebar-nav-item');
-
-        const openSidebar = () => {
+        
+        menuOpen.onclick = () => {
             sidebar.classList.remove('-translate-x-full');
             bgOverlay.classList.remove('hidden');
             setTimeout(() => bgOverlay.classList.add('opacity-100'), 10);
@@ -266,49 +321,44 @@
                 document.body.classList.remove('menu-open');
             }, 300);
         };
-
-        menuOpen.onclick = openSidebar;
         menuClose.onclick = closeSidebar;
         bgOverlay.onclick = closeSidebar;
-        links.forEach(link => link.onclick = closeSidebar);
 
         // Language Modal Logic
         const langOpen = document.getElementById('lang-open');
         const langClose = document.getElementById('lang-close');
         const langOverlay = document.getElementById('lang-overlay');
         const langModal = document.getElementById('lang-modal');
-        const currentLangDisplay = document.getElementById('current-lang');
 
-        const openLang = () => {
+        langOpen.onclick = () => {
             langOverlay.classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
-            // Trigger animation
             setTimeout(() => {
-                langModal.style.opacity = '1';
-                langModal.style.transform = 'scale(1)';
+                langModal.classList.remove('scale-90', 'opacity-0');
             }, 10);
         };
 
         const closeLang = () => {
-            langModal.style.opacity = '0';
-            langModal.style.transform = 'scale(0.9)';
-            setTimeout(() => {
-                langOverlay.classList.add('hidden');
-                document.body.style.overflow = 'auto';
-            }, 300);
+            langModal.classList.add('scale-90', 'opacity-0');
+            setTimeout(() => langOverlay.classList.add('hidden'), 300);
         };
-
-        langOpen.onclick = openLang;
         langClose.onclick = closeLang;
-        langOverlay.onclick = (e) => { if(e.target === langOverlay) closeLang(); };
 
-        const setLanguage = (lang) => {
-            currentLangDisplay.innerText = lang;
-            closeLang();
-            // Anda bisa menambahkan logika ganti bahasa di sini
-            console.log("Language changed to: " + lang);
+        // Search Modal Logic
+        const searchOpen = document.getElementById('search-open');
+        const searchClose = document.getElementById('search-close');
+        const searchOverlay = document.getElementById('search-overlay');
+
+        searchOpen.onclick = () => {
+            searchOverlay.classList.remove('hidden');
+            setTimeout(() => searchOverlay.classList.remove('opacity-0'), 10);
+            document.getElementById('search-input').focus();
         };
-    </script>
 
+        const closeSearch = () => {
+            searchOverlay.classList.add('opacity-0');
+            setTimeout(() => searchOverlay.classList.add('hidden'), 300);
+        };
+        searchClose.onclick = closeSearch;
+    </script>
 </body>
 </html>
