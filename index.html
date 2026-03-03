@@ -46,17 +46,17 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.05);
         }
 
-        /* Navigasi Samping (Sidebar Pop-up) */
-        .sidebar-item {
+        /* Style Sidebar Pop-up */
+        .sidebar-nav-item {
             color: #4a148c;
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 600;
             transition: 0.3s;
             padding: 12px 20px;
             display: block;
             border-radius: 8px;
         }
-        .sidebar-item:hover {
+        .sidebar-nav-item:hover {
             background-color: #f3e5f5;
             color: #7b1fa2;
         }
@@ -66,7 +66,6 @@
 
     <header class="bg-white border-b sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-6 py-4 grid grid-cols-3 items-center">
-            
             <div class="flex justify-start">
                 <button id="menu-open" class="text-purple-900 text-2xl p-2 focus:outline-none hover:bg-gray-100 rounded-lg transition">
                     <i class="fa-solid fa-bars-staggered"></i>
@@ -74,9 +73,9 @@
             </div>
 
             <div class="flex flex-col items-center text-center">
-                <img src="logo1.png" alt="Logo" class="w-10 h-10 object-contain">
-                <span class="block text-base font-extrabold tracking-widest text-purple-900 uppercase italic leading-none mt-1">ICE KULCOOL</span>
-                <span class="text-[7px] tracking-[0.2em] text-gray-400 uppercase leading-none">Premium Chocolate Treats</span>
+                <img src="logo1.png" alt="Logo" class="w-12 h-12 object-contain">
+                <span class="block text-lg font-extrabold tracking-widest text-purple-900 uppercase italic leading-none mt-1">ICE KULCOOL</span>
+                <span class="text-[8px] tracking-[0.2em] text-gray-400 uppercase leading-none">Premium Chocolate Treats</span>
             </div>
 
             <div class="flex justify-end">
@@ -87,64 +86,68 @@
         </div>
     </header>
 
-    <div id="menu-overlay" class="fixed inset-0 bg-black/40 z-[60] hidden opacity-0 transition-opacity duration-300"></div>
+    <div id="bg-overlay" class="fixed inset-0 bg-black/50 z-[60] hidden opacity-0 transition-opacity duration-300"></div>
 
-    <div id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-white z-[70] shadow-2xl transform -translate-x-full transition-transform duration-300 ease-in-out">
-        <div class="p-6">
+    <div id="sidebar-menu" class="fixed top-0 left-0 h-full w-72 bg-white z-[100] transform -translate-x-full transition-transform duration-300 ease-in-out shadow-2xl">
+        <div class="flex flex-col h-full p-6">
             <div class="flex justify-between items-center mb-8 border-b pb-4">
-                <span class="font-bold text-purple-900">MENU</span>
-                <button id="menu-close" class="text-gray-400 hover:text-purple-900 text-2xl focus:outline-none">
+                <span class="font-bold text-purple-900 tracking-widest">MENU</span>
+                <button id="menu-close" class="text-gray-400 hover:text-purple-900 text-2xl">
                     <i class="fa-solid fa-xmark"></i>
                 </button>
             </div>
-
             <nav class="flex flex-col gap-2">
-                <a href="#home" class="sidebar-item">Beranda</a>
-                <a href="#about" class="sidebar-item">Tentang</a>
-                <a href="galeri.html" class="sidebar-item">Galeri</a>
-                <a href="#menu" class="sidebar-item">Harga</a>
-                <hr class="my-2 border-gray-100">
-                <a href="https://wa.me/6285703393720" class="sidebar-item text-green-600"><i class="fa-brands fa-whatsapp mr-2"></i>Hubungi Kami</a>
+                <a href="#home" class="sidebar-nav-item">BERANDA</a>
+                <a href="#about" class="sidebar-nav-item">TENTANG</a>
+                <a href="galeri.html" class="sidebar-nav-item">GALERI</a>
+                <a href="#menu" class="sidebar-nav-item">HARGA</a>
+                <hr class="my-4 border-gray-100">
+                <a href="https://wa.me/6285703393720" class="sidebar-nav-item text-green-600 font-bold">
+                    <i class="fa-brands fa-whatsapp mr-2"></i>HUBUNGI KAMI
+                </a>
             </nav>
         </div>
     </div>
 
     <section id="home" class="hero-bg flex items-center justify-center text-center text-white px-4">
         <div class="max-w-3xl">
-            <h1 class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">THE ART OF MELTING CHOCOLATE</h1>
-            <p class="text-lg md:text-xl font-light mb-10 tracking-wide">Menghadirkan sensasi kemewahan piscok lumer premium dengan kualitas bahan terbaik untuk setiap gigitan Anda.</p>
-            <a href="#menu" class="bg-white text-purple-900 px-10 py-4 font-bold uppercase tracking-widest text-sm hover:bg-purple-100 transition shadow-2xl">
-                Explore Products
-            </a>
+            <h1 class="text-4xl md:text-6xl font-extrabold mb-6">THE ART OF MELTING CHOCOLATE</h1>
+            <p class="text-lg md:text-xl font-light mb-10">Menghadirkan sensasi kemewahan piscok lumer premium dengan kualitas bahan terbaik.</p>
+            <a href="#menu" class="bg-white text-purple-900 px-10 py-4 font-bold uppercase tracking-widest text-sm hover:bg-purple-100 transition shadow-2xl">Explore Products</a>
         </div>
     </section>
+
+    <a href="https://wa.me/6285703393720" class="fixed bottom-10 right-10 bg-green-500 text-white w-16 h-16 rounded-full flex items-center justify-center text-3xl shadow-2xl hover:bg-green-600 transition-all z-50">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
 
     <script>
         const menuOpen = document.getElementById('menu-open');
         const menuClose = document.getElementById('menu-close');
-        const sidebar = document.getElementById('sidebar');
-        const overlay = document.getElementById('menu-overlay');
-        const links = document.querySelectorAll('.sidebar-item');
+        const sidebar = document.getElementById('sidebar-menu');
+        const bgOverlay = document.getElementById('bg-overlay');
+        const links = document.querySelectorAll('.sidebar-nav-item');
 
-        function toggleMenu(isOpen) {
-            if (isOpen) {
-                sidebar.classList.remove('-translate-x-full');
-                overlay.classList.remove('hidden');
-                setTimeout(() => overlay.classList.add('opacity-100'), 10);
-            } else {
-                sidebar.classList.add('-translate-x-full');
-                overlay.classList.remove('opacity-100');
-                setTimeout(() => overlay.classList.add('hidden'), 300);
-            }
-        }
+        const openSidebar = () => {
+            sidebar.classList.remove('-translate-x-full');
+            bgOverlay.classList.remove('hidden');
+            setTimeout(() => bgOverlay.classList.add('opacity-100'), 10);
+            document.body.style.overflow = 'hidden'; // Kunci scroll saat menu buka
+        };
 
-        menuOpen.onclick = () => toggleMenu(true);
-        menuClose.onclick = () => toggleMenu(false);
-        overlay.onclick = () => toggleMenu(false);
+        const closeSidebar = () => {
+            sidebar.classList.add('-translate-x-full');
+            bgOverlay.classList.remove('opacity-100');
+            setTimeout(() => {
+                bgOverlay.classList.add('hidden');
+                document.body.style.overflow = 'auto'; // Aktifkan scroll lagi
+            }, 300);
+        };
 
-        links.forEach(link => {
-            link.onclick = () => toggleMenu(false);
-        });
+        menuOpen.onclick = openSidebar;
+        menuClose.onclick = closeSidebar;
+        bgOverlay.onclick = closeSidebar;
+        links.forEach(link => link.onclick = closeSidebar);
     </script>
 </body>
 </html>
