@@ -80,13 +80,20 @@
         </div>
     </header>
 
-    <div id="search-overlay" class="fixed inset-0 bg-black/80 z-[120] hidden flex items-center justify-center p-6 modal-transition opacity-0">
-        <button id="search-close" class="absolute top-8 right-8 text-white text-3xl hover:text-purple-400"><i class="fa-solid fa-xmark"></i></button>
-        <div class="w-full max-w-2xl text-center">
-            <h2 data-key="search-title" class="text-white text-2xl font-bold mb-6 uppercase tracking-widest">Apa yang ingin Anda cari?</h2>
-            <div class="relative">
-                <input type="text" id="search-input" class="w-full bg-transparent border-b-2 border-white text-white text-3xl py-4 focus:outline-none focus:border-purple-500 placeholder-gray-500" placeholder="...">
-                <button class="absolute right-0 bottom-4 text-white text-2xl"><i class="fa-solid fa-magnifying-glass"></i></button>
+    <div id="search-overlay" class="fixed inset-0 bg-black/60 z-[120] hidden flex items-center justify-center p-4 modal-transition opacity-0">
+        <div id="search-modal" class="bg-white w-full max-w-lg rounded-2xl shadow-2xl overflow-hidden transform scale-95 transition-all duration-300">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 data-key="search-title" class="text-purple-900 font-bold uppercase tracking-widest text-sm">Apa yang ingin Anda cari?</h2>
+                    <button id="search-close" class="text-gray-400 hover:text-red-500 transition"><i class="fa-solid fa-xmark text-xl"></i></button>
+                </div>
+                <div class="relative">
+                    <input type="text" id="search-input" class="w-full bg-gray-100 rounded-xl px-5 py-4 focus:outline-none focus:ring-2 focus:ring-purple-500 text-gray-700" placeholder="Ketik galeri, harga, atau tentang...">
+                    <button id="search-submit" class="absolute right-4 top-1/2 -translate-y-1/2 text-purple-600">
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+                <p class="text-[10px] text-gray-400 mt-3 italic">*Tekan Enter untuk mencari</p>
             </div>
         </div>
     </div>
@@ -343,22 +350,62 @@
         };
         langClose.onclick = closeLang;
 
-        // Search Modal Logic
+        // --- SEARCH LOGIC TERBARU ---
         const searchOpen = document.getElementById('search-open');
         const searchClose = document.getElementById('search-close');
         const searchOverlay = document.getElementById('search-overlay');
+        const searchModal = document.getElementById('search-modal');
+        const searchInput = document.getElementById('search-input');
+        const searchSubmit = document.getElementById('search-submit');
 
-        searchOpen.onclick = () => {
+        const openSearch = () => {
             searchOverlay.classList.remove('hidden');
-            setTimeout(() => searchOverlay.classList.remove('opacity-0'), 10);
-            document.getElementById('search-input').focus();
+            setTimeout(() => {
+                searchOverlay.classList.remove('opacity-0');
+                searchModal.classList.remove('scale-95');
+            }, 10);
+            searchInput.focus();
         };
 
         const closeSearch = () => {
             searchOverlay.classList.add('opacity-0');
+            searchModal.classList.add('scale-95');
             setTimeout(() => searchOverlay.classList.add('hidden'), 300);
         };
+
+        // Fungsi Inti Pencarian
+        const performSearch = () => {
+            const query = searchInput.value.toLowerCase().trim();
+            
+            if (query === 'galeri' || query === 'gallery') {
+                window.location.href = 'galeri.html';
+            } else if (query === 'harga' || query === 'price' || query === 'menu') {
+                window.location.href = '#menu';
+                closeSearch();
+            } else if (query === 'tentang' || query === 'about') {
+                window.location.href = '#about';
+                closeSearch();
+            } else if (query === 'beranda' || query === 'home') {
+                window.location.href = '#home';
+                closeSearch();
+            } else if (query !== "") {
+                alert("Hasil pencarian untuk '" + query + "' tidak ditemukan.");
+            }
+        };
+
+        searchOpen.onclick = openSearch;
         searchClose.onclick = closeSearch;
+        
+        // Klik di luar kotak modal untuk menutup
+        searchOverlay.onclick = (e) => {
+            if (e.target === searchOverlay) closeSearch();
+        };
+
+        // Event saat tekan tombol Arrow atau Enter
+        searchSubmit.onclick = performSearch;
+        searchInput.onkeypress = (e) => {
+            if (e.key === 'Enter') performSearch();
+        };
     </script>
 </body>
 </html>
