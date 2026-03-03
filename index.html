@@ -7,7 +7,7 @@
     <link rel="icon" href="logo1.png">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         * { font-family: 'Montserrat', sans-serif; }
         html { scroll-behavior: smooth; }
@@ -22,10 +22,12 @@
         .product-card {
             border: 1px solid #eee;
             transition: all 0.4s ease;
+            border-radius: 20px; /* Membuat kartu lebih halus */
         }
         .product-card:hover {
             border-color: #7b1fa2;
             box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transform: translateY(-5px);
         }
 
         .sidebar-nav-item {
@@ -49,6 +51,25 @@
 
         .modal-transition {
             transition: all 0.3s ease-in-out;
+        }
+
+        /* Tombol Explore yang lebih elegan */
+        .btn-elegant {
+            background: white;
+            color: #4a148c;
+            padding: 16px 40px;
+            border-radius: 9999px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            display: inline-block;
+        }
+        .btn-elegant:hover {
+            transform: scale(1.05);
+            background: #f3e5f5;
+            box-shadow: 0 15px 25px rgba(0,0,0,0.15);
         }
     </style>
 </head>
@@ -80,21 +101,13 @@
         </div>
     </header>
 
-    <div id="search-overlay" class="fixed inset-0 bg-black/60 z-[120] hidden flex items-center justify-center p-6 modal-transition opacity-0">
-        <div class="bg-white w-full max-w-lg rounded-2xl shadow-2xl p-8 transform scale-95 transition-all duration-300 relative" id="search-modal">
-            <button id="search-close" class="absolute top-4 right-4 text-gray-400 hover:text-purple-600 transition text-2xl">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-            
-            <div class="text-center">
-                <h2 data-key="search-title" class="text-purple-900 text-xl font-bold mb-6 uppercase tracking-widest">Apa yang ingin Anda cari?</h2>
-                <div class="relative border-b-2 border-purple-200 focus-within:border-purple-600 transition">
-                    <input type="text" id="search-input" class="w-full bg-transparent text-gray-800 text-xl py-3 focus:outline-none placeholder-gray-300" placeholder="Ketik di sini...">
-                    <button id="btn-search-trigger" class="absolute right-0 bottom-3 text-purple-600 text-xl hover:scale-110 transition">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                    </button>
-                </div>
-                <p class="text-[10px] text-gray-400 mt-4 italic">*Ketik 'galeri', 'harga', atau 'tentang' lalu tekan Enter</p>
+    <div id="search-overlay" class="fixed inset-0 bg-black/80 z-[120] hidden flex items-center justify-center p-6 modal-transition opacity-0">
+        <button id="search-close" class="absolute top-8 right-8 text-white text-3xl hover:text-purple-400"><i class="fa-solid fa-xmark"></i></button>
+        <div class="w-full max-w-2xl text-center">
+            <h2 data-key="search-title" class="text-white text-2xl font-bold mb-6 uppercase tracking-widest">Apa yang ingin Anda cari?</h2>
+            <div class="relative">
+                <input type="text" id="search-input" class="w-full bg-transparent border-b-2 border-white text-white text-3xl py-4 focus:outline-none focus:border-purple-500 placeholder-gray-500" placeholder="...">
+                <button id="btn-search-trigger" class="absolute right-0 bottom-4 text-white text-2xl"><i class="fa-solid fa-magnifying-glass"></i></button>
             </div>
         </div>
     </div>
@@ -139,7 +152,7 @@
                 <a href="#menu" data-key="nav-price" class="sidebar-nav-item">HARGA</a>
                 <hr class="my-4 border-gray-100">
                 <a href="https://wa.me/6285703393720" data-key="nav-contact" class="sidebar-nav-item text-green-600">
-                    <i class="fa-brands fa-whatsapp mr-2"></i> HUBUNGI KAMI
+                    <i class="fa-brands fa-whatsapp fa-lg mr-2"></i> HUBUNGI KAMI
                 </a>
             </nav>
         </div>
@@ -149,7 +162,7 @@
         <div class="max-w-3xl">
             <h1 data-key="hero-title" class="text-4xl md:text-6xl font-extrabold mb-6 uppercase leading-tight">The Art of Melting Chocolate</h1>
             <p data-key="hero-desc" class="text-lg md:text-xl font-light mb-10 tracking-wide">Menghadirkan sensasi kemewahan piscok lumer premium dengan kualitas bahan terbaik untuk setiap gigitan Anda.</p>
-            <a href="#menu" data-key="hero-btn" class="bg-white text-purple-900 px-10 py-4 font-bold uppercase tracking-widest text-sm hover:bg-purple-100 transition shadow-2xl">Explore Products</a>
+            <a href="#menu" data-key="hero-btn" class="btn-elegant">Explore Products</a>
         </div>
     </section>
 
@@ -175,7 +188,7 @@
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
                 <div class="product-card bg-white p-8 group">
-                    <div class="w-full h-48 bg-gray-100 mb-6 flex items-center justify-center">
+                    <div class="w-full h-48 bg-gray-100 mb-6 flex items-center justify-center rounded-xl">
                         <i class="fa-solid fa-ice-cream text-6xl text-purple-200"></i>
                     </div>
                     <h4 data-key="card1-name" class="text-xl font-bold mb-2 uppercase">Harga Normal</h4>
@@ -187,7 +200,7 @@
                 </div>
                 <div class="product-card bg-white p-8 group relative overflow-hidden border-2 border-purple-200">
                     <div class="absolute top-4 right-[-35px] bg-purple-600 text-white text-[10px] py-1 px-10 rotate-45 font-bold uppercase">Best Seller</div>
-                    <div class="w-full h-48 bg-gray-100 mb-6 flex items-center justify-center">
+                    <div class="w-full h-48 bg-gray-100 mb-6 flex items-center justify-center rounded-xl">
                         <i class="fa-solid fa-fire text-6xl text-purple-200"></i>
                     </div>
                     <h4 data-key="card2-name" class="text-xl font-bold mb-2 uppercase">Paket Hemat</h4>
@@ -198,7 +211,7 @@
                     </div>
                 </div>
                 <div class="product-card bg-white p-8 group">
-                    <div class="w-full h-48 bg-gray-100 mb-6 flex items-center justify-center">
+                    <div class="w-full h-48 bg-gray-100 mb-6 flex items-center justify-center rounded-xl">
                         <i class="fa-solid fa-box-open text-6xl text-purple-200"></i>
                     </div>
                     <h4 data-key="card3-name" class="text-xl font-bold mb-2 uppercase">Paket Combo</h4>
@@ -228,7 +241,7 @@
                 <div class="flex justify-center md:justify-start space-x-6 text-2xl">
                     <a href="#" class="hover:text-purple-400 transition"><i class="fa-brands fa-instagram"></i></a>
                     <a href="#" class="hover:text-purple-400 transition"><i class="fa-brands fa-tiktok"></i></a>
-                    <a href="#" class="hover:text-purple-400 transition"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="https://wa.me/6285703393720" class="hover:text-purple-400 transition"><i class="fa-brands fa-whatsapp"></i></a>
                 </div>
             </div>
         </div>
@@ -351,15 +364,13 @@
         };
         langClose.onclick = closeLang;
 
-        // --- SEARCH LOGIC (DIPERBARUI) ---
+        // Search Logic
         const searchOpen = document.getElementById('search-open');
         const searchClose = document.getElementById('search-close');
         const searchOverlay = document.getElementById('search-overlay');
         const searchInput = document.getElementById('search-input');
-        const searchModal = document.getElementById('search-modal');
         const btnSearch = document.getElementById('btn-search-trigger');
 
-        // Fungsi eksekusi pencarian
         const doSearch = () => {
             const keyword = searchInput.value.toLowerCase().trim();
             if (keyword === 'galeri' || keyword === 'gallery') {
@@ -370,45 +381,22 @@
             } else if (keyword === 'tentang' || keyword === 'about') {
                 window.location.href = '#about';
                 closeSearch();
-            } else if (keyword === 'beranda' || keyword === 'home') {
-                window.location.href = '#home';
-                closeSearch();
-            } else if (keyword !== "") {
-                alert("Kata kunci '" + keyword + "' tidak ditemukan. Coba ketik 'galeri' atau 'harga'.");
             }
         };
 
         searchOpen.onclick = () => {
             searchOverlay.classList.remove('hidden');
-            setTimeout(() => {
-                searchOverlay.classList.remove('opacity-0');
-                searchModal.classList.remove('scale-95');
-            }, 10);
+            setTimeout(() => searchOverlay.classList.remove('opacity-0'), 10);
             searchInput.focus();
         };
 
         const closeSearch = () => {
             searchOverlay.classList.add('opacity-0');
-            searchModal.classList.add('scale-95');
             setTimeout(() => searchOverlay.classList.add('hidden'), 300);
         };
-
         searchClose.onclick = closeSearch;
-        
-        // Klik tombol kaca pembesar di popup
         btnSearch.onclick = doSearch;
-
-        // Tekan Enter untuk search
-        searchInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                doSearch();
-            }
-        });
-
-        // Klik di luar kotak putih untuk menutup search
-        searchOverlay.onclick = (e) => {
-            if (e.target === searchOverlay) closeSearch();
-        };
+        searchInput.addEventListener('keypress', (e) => { if(e.key === 'Enter') doSearch(); });
     </script>
 </body>
 </html>
