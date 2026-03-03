@@ -96,6 +96,36 @@
             background-color: #128c7e;
             color: white;
         }
+
+        /* --- TOMBOL BACK TO TOP (KODE BARU 1) --- */
+        #backToTop {
+            position: fixed;
+            bottom: 110px; 
+            right: 40px;
+            width: 50px;
+            height: 50px;
+            background-color: #4a148c;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            z-index: 90;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        #backToTop.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        #backToTop:hover {
+            background-color: #7b1fa2;
+            transform: translateY(-5px);
+        }
     </style>
 </head>
 <body class="bg-white text-gray-900">
@@ -103,6 +133,10 @@
     <a href="https://wa.me/6285703393720" class="wa-float" target="_blank">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
+
+    <div id="backToTop" onclick="scrollToTop()">
+        <i class="fa-solid fa-chevron-up"></i>
+    </div>
 
     <header class="bg-white border-b sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-6 py-4 grid grid-cols-3 items-center">
@@ -293,6 +327,7 @@
                 'hero-btn': 'Lihat Produk',
                 'about-tag': 'Kualitas Utama',
                 'about-title': 'Kenapa Memilih Ice Kulcool?',
+                'about-tagline': 'Premium Chocolate Treats',
                 'about-desc': '"Kami percaya bahwa kebahagiaan dimulai dari bahan yang berkualitas. Pisang pilihan yang matang sempurna dibalut dengan cokelat premium."',
                 'menu-tag': 'Menu Kami',
                 'menu-title': 'Varian Paket Kami',
@@ -339,7 +374,6 @@
         // --- FUNGSI PESAN SESUAI PERMINTAAN ANDA ---
         function buyProduct(name, price) {
             const phone = "6285703393720";
-            // Format pesan: Halo Mincool, saya ingin memesan produk: *Nama Paket:* Nama Paket *Harga:* Rp X.XXX Terima kasih!
             const message = `Halo Mincool, saya ingin memesan produk: *${name}:* ${name} *Harga:* ${price} Terima kasih!`;
             const encoded = encodeURIComponent(message);
             window.open(`https://wa.me/${phone}?text=${encoded}`, '_blank');
@@ -420,6 +454,24 @@
         searchClose.onclick = closeSearch;
         btnSearch.onclick = doSearch;
         searchInput.onkeypress = (e) => { if(e.key === 'Enter') doSearch(); };
+
+        // --- FUNGSI BACK TO TOP (KODE BARU 3) ---
+        const backToTopBtn = document.getElementById('backToTop');
+
+        window.onscroll = () => {
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        };
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
     </script>
 </body>
 </html>
