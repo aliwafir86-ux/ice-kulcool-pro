@@ -277,7 +277,6 @@
     </footer>
 
     <script>
-        // Data Bahasa
         const languages = {
             'ID': {
                 'header-tagline': 'Camilan Cokelat Premium',
@@ -337,10 +336,11 @@
             }
         };
 
-        // Fungsi Beli Produk (WhatsApp)
+        // --- FUNGSI PESAN SESUAI PERMINTAAN ANDA ---
         function buyProduct(name, price) {
             const phone = "6285703393720";
-            const message = `Halo Ice Kulcool, saya ingin memesan produk:\n\n*Nama Paket:* ${name}\n*Harga:* ${price}\n\nTerima kasih!`;
+            // Format pesan: Halo Mincool, saya ingin memesan produk: *Nama Paket:* Nama Paket *Harga:* Rp X.XXX Terima kasih!
+            const message = `Halo Mincool, saya ingin memesan produk: *${name}:* ${name} *Harga:* ${price} Terima kasih!`;
             const encoded = encodeURIComponent(message);
             window.open(`https://wa.me/${phone}?text=${encoded}`, '_blank');
         }
