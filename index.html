@@ -12,22 +12,19 @@
         * { font-family: 'Montserrat', sans-serif; }
         html { scroll-behavior: smooth; }
         
+        /* --- BACKGROUND HERO --- */
         .hero-bg {
+            /* Linear gradient hanya untuk background image agar teks terbaca, logo tidak terkena */
             background: linear-gradient(rgba(74, 20, 140, 0.4), rgba(74, 20, 140, 0.4)), url('piscok2.png');
             background-size: cover;
             background-position: center;
             height: 80vh;
         }
 
-        /* PERBAIKAN HEADER TRANSPARAN TANPA UBAH POSISI BAWAH */
-        header {
-            position: absolute; /* Header melayang di atas hero tanpa mendorong konten */
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 50;
-            background: transparent !important;
-            border-bottom: none !important;
+        /* --- LOGO STYLE (NORMAL/NO FILTER) --- */
+        .logo-img {
+            filter: none !important; /* Memastikan tidak ada filter */
+            mix-blend-mode: normal; /* Memastikan mode blending standar */
         }
 
         .product-card {
@@ -109,7 +106,7 @@
         #backToTop {
             position: fixed;
             bottom: 110px; 
-            right: 45px;
+            right: 45px; 
             width: 50px;
             height: 50px;
             background-color: #4a148c;
@@ -146,24 +143,25 @@
         <i class="fa-solid fa-chevron-up"></i>
     </div>
 
-    <header>
+    <header class="bg-white border-b sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-6 py-4 grid grid-cols-3 items-center">
             <div class="flex justify-start">
-                <button id="menu-open" class="text-white text-2xl p-2 hover:bg-white/10 rounded-lg transition focus:outline-none">
+                <button id="menu-open" class="text-purple-900 text-2xl p-2 hover:bg-gray-100 rounded-lg transition focus:outline-none">
                     <i class="fa-solid fa-bars-staggered"></i>
                 </button>
             </div>
 
             <div class="flex flex-col items-center text-center">
-                <img src="logo1.png" alt="Logo" class="w-12 h-12 object-contain brightness-0 invert"> <span class="block text-lg font-extrabold tracking-widest text-white uppercase italic leading-none mt-1">ICE KULCOOL</span>
-                <span data-key="header-tagline" class="hidden sm:block text-[8px] tracking-[0.2em] text-purple-200 uppercase leading-none">Premium Chocolate Treats</span>
+                <img src="logo1.png" alt="Ice Kulcool Logo" class="w-12 h-12 object-contain logo-img">
+                <span class="block text-lg font-extrabold tracking-widest text-purple-900 uppercase italic leading-none mt-1">ICE KULCOOL</span>
+                <span data-key="header-tagline" class="hidden sm:block text-[8px] tracking-[0.2em] text-gray-400 uppercase leading-none">Premium Chocolate Treats</span>
             </div>
 
             <div class="flex justify-end items-center space-x-6">
-                <button id="search-open" class="text-white hover:text-purple-200 transition">
+                <button id="search-open" class="text-purple-900 hover:text-purple-600 transition">
                     <i class="fa-solid fa-magnifying-glass text-lg"></i>
                 </button>
-                <button id="lang-open" class="flex items-center space-x-1 text-white font-bold text-xs uppercase tracking-widest hover:text-purple-200 transition">
+                <button id="lang-open" class="flex items-center space-x-1 text-purple-900 font-bold text-xs uppercase tracking-widest hover:text-purple-600 transition">
                     <span id="current-lang">ID</span>
                     <i class="fa-solid fa-chevron-down text-[10px]"></i>
                 </button>
@@ -247,7 +245,8 @@
     </div>
 
     <section id="home" class="hero-bg flex items-center justify-center text-center text-white px-4">
-        <div class="max-w-3xl mt-20"> <h1 data-key="hero-title" class="text-4xl md:text-6xl font-extrabold mb-6 uppercase leading-tight">The Art of Melting Chocolate</h1>
+        <div class="max-w-3xl">
+            <h1 data-key="hero-title" class="text-4xl md:text-6xl font-extrabold mb-6 uppercase leading-tight">The Art of Melting Chocolate</h1>
             <p data-key="hero-desc" class="text-lg md:text-xl font-light mb-10 tracking-wide">Menghadirkan sensasi kemewahan piscok lumer premium dengan kualitas bahan terbaik untuk setiap gigitan Anda.</p>
             <a href="#menu" data-key="hero-btn" class="btn-elegant">Explore Products</a>
         </div>
@@ -316,7 +315,7 @@
         <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-16 text-center md:text-left">
             <div>
                 <div class="flex items-center justify-center md:justify-start mb-6 gap-3">
-                    <img src="logo1.png" alt="Logo Ice Kulcool" class="w-10 h-10 object-contain">
+                    <img src="logo1.png" alt="Logo Ice Kulcool" class="w-10 h-10 object-contain logo-img">
                     <h4 class="text-xl font-extrabold tracking-widest uppercase">ICE KULCOOL.</h4>
                 </div>
                 <p data-key="footer-desc" class="text-gray-400 text-sm leading-relaxed">Kami berdedikasi untuk memberikan pengalaman menikmati jajanan tradisional dengan standar kualitas internasional.</p>
@@ -338,7 +337,7 @@
     </footer>
 
     <script>
-        // ISI SCRIPT SAMA DENGAN KODE AWAL KAMU
+        // ... (Script Anda dari file asli tetap di sini) ...
         const languages = {
             'ID': {
                 'header-tagline': 'Camilan Cokelat Premium',
@@ -361,7 +360,7 @@
                 'card1-name': 'Harga Normal',
                 'card1-desc': 'Nikmati keaslian rasa piscok original dengan balutan cokelat klasik yang melimpah.',
                 'card2-name': 'Paket Hemat',
-                'card2-desc': 'Dapatkan 3 tusuk piscok mix dengan topping kacang sangrai atau springkle.',
+                'card2-desc': 'Dapatkan 3 tusuk piscok mix dengan topping kacang atau springkle.',
                 'card3-name': 'Paket Combo',
                 'card3-desc': 'Pesta piscok dengan 6 tusuk bebas pilih topping sesukamu. Lebih banyak, lebih seru!',
                 'buy-btn': 'Beli Sekarang',
@@ -389,7 +388,7 @@
                 'card1-name': 'Pantos Normal',
                 'card1-desc': 'Raoskeun asli rasa piscok original kalayan balutan coklat klasik anu seueur.',
                 'card2-name': 'Paket Hemat',
-                'card2-desc': 'Kengingkeun 3 tusuk piscok mix nganggo topping kacang sangrai atanapi springkle.',
+                'card2-desc': 'Kengingkeun 3 tusuk piscok mix nganggo topping kacang atanapi springkle.',
                 'card3-name': 'Paket Combo',
                 'card3-desc': 'Pesta piscok 6 tusuk bébas milih topping sakahayang anjeun. Langkung seueur, langkung seru!',
                 'buy-btn': 'Pesen Ayeuna',
@@ -445,7 +444,7 @@
                 'card1-name': 'Normal Price',
                 'card1-desc': 'Enjoy the authenticity of original chocolate banana with abundant classic chocolate coating.',
                 'card2-name': 'Saving Pack',
-                'card2-desc': 'Get 3 mixed chocolate banana sticks with roasted peanuts or sprinkles topping.',
+                'card2-desc': 'Get 3 mixed chocolate banana sticks with peanuts or sprinkles topping.',
                 'card3-name': 'Combo Pack',
                 'card3-desc': 'Chocolate banana party with 6 sticks, free to choose any topping you like!',
                 'buy-btn': 'Buy Now',
@@ -484,15 +483,22 @@
 
         function buyProduct(name, price) {
             const phone = "6285703393720";
-            const message = `Halo Mincool, saya ingin memesan produk: *${name}* dengan *Harga:* ${price}. Terima kasih!`;
-            const encoded = encodeURIComponent(message);
-            window.open(`https://wa.me/${phone}?text=${encoded}`, '_blank');
+            let topping = "";
+            if (name === 'Paket Hemat') {
+                topping = prompt("Pilih Topping (Kacang Sangrai / Sprinkle):", "Kacang");
+            } else if (name === 'Paket Combo') {
+                topping = prompt("Masukkan 6 Topping pilihan Anda:", "Cokelat, Keju, Kacang, dll...");
+            } else {
+                topping = "Original Chocolate";
+            }
+            if (topping === null) return; 
+            const message = `Halo Mincool! 👋%0A%0ASaya ingin memesan produk:%0A*Paket:* ${name}%0A*Topping:* ${topping}%0A*Harga:* ${price}%0A%0ATerima kasih!`;
+            window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
         }
 
         function setLanguage(lang) {
             document.getElementById('current-lang').innerText = lang;
             document.documentElement.dir = (lang === 'AR') ? 'rtl' : 'ltr';
-            
             const elements = document.querySelectorAll('[data-key]');
             elements.forEach(el => {
                 const key = el.getAttribute('data-key');
