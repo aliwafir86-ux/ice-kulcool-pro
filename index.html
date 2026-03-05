@@ -333,9 +333,9 @@
     </section>
 
     <footer class="bg-gray-900 text-white py-20 px-6">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-16 text-center md:text-left">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-16 text-left">
             <div>
-                <div class="flex items-center justify-center md:justify-start mb-6 gap-3">
+                <div class="flex items-center justify-start mb-6 gap-3">
                     <img src="logo1.png" alt="Logo Ice Kulcool" class="w-10 h-10 object-contain">
                     <h4 class="text-xl font-extrabold tracking-widest uppercase">ICE KULCOOL.</h4>
                 </div>
@@ -343,12 +343,20 @@
             </div>
             <div>
                 <h4 data-key="footer-contact-title" class="text-sm font-bold uppercase tracking-widest mb-6 border-l-4 border-purple-600 pl-4">Contact Info</h4>
-                <p class="text-gray-400 text-sm mb-4"><i class="fa-solid fa-location-dot text-purple-500 mr-2"></i> Buahbatu, Bandung</p>
-                <p class="text-gray-400 text-sm"><i class="fa-solid fa-phone text-purple-500 mr-2"></i> +62 857 0339 3720</p>
+                <div class="space-y-4">
+                    <p class="text-gray-400 text-sm flex items-start">
+                        <i class="fa-solid fa-location-dot text-purple-500 mr-3 mt-1"></i> 
+                        <span>Buahbatu, Bandung</span>
+                    </p>
+                    <p class="text-gray-400 text-sm flex items-start">
+                        <i class="fa-solid fa-phone text-purple-500 mr-3 mt-1"></i> 
+                        <span>+62 857 0339 3720</span>
+                    </p>
+                </div>
             </div>
             <div>
                 <h4 class="text-sm font-bold uppercase tracking-widest mb-6 border-l-4 border-purple-600 pl-4">Follow Us</h4>
-                <div class="flex justify-center md:justify-start space-x-6 text-2xl">
+                <div class="flex justify-start space-x-6 text-2xl">
                     <a href="https://www.instagram.com/ice_kulcool/" target="_blank" class="hover:text-purple-400 transition"><i class="fa-brands fa-instagram"></i></a>
                     <a href="#" class="hover:text-purple-400 transition"><i class="fa-brands fa-tiktok"></i></a>
                     <a href="https://wa.me/6285703393720" class="hover:text-purple-400 transition"><i class="fa-brands fa-whatsapp"></i></a>
@@ -370,7 +378,7 @@
                 navbar.classList.remove("scrolled");
             }
 
-            // Logika Back to Top (Tetap sesuai kode asli)
+            // Logika Back to Top
             if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
                 backToTopBtn.classList.add('show');
             } else {
@@ -510,7 +518,7 @@
                 'menu-tag': 'قائمتنا',
                 'menu-title': 'خيارات الباقات لدينا',
                 'card1-name': 'السعر العادي',
-                'card1-desc': 'استمتع بأصالة طعم الموز بالشوكولاتة الأصلي مع تغطية غنية من الشوكولاتة الكلاسيكية.',
+                'card1-desc': 'استمتع بأصالة طعم الموز بالشوكولاتة الأصلي dengan تغطية غنية من الشوكولاتة الكلاسيكية.',
                 'card2-name': 'باقة التوفير',
                 'card2-desc': 'احصل على 3 قطع من الموز بالشوكولاتة المشكلة مع الفول السوداني أو السبرينكلز.',
                 'card3-name': 'باقة كومبو',
@@ -536,7 +544,6 @@
             if (topping === null) return; 
 
             const message = `Halo Mincool! 👋%0A%0ASaya ingin memesan produk:%0A*Paket:* ${name}%0A*Topping:* ${topping}%0A*Harga:* ${price}%0A%0ATerima kasih!`;
-            const encoded = encodeURIComponent(message);
             window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
         }
 
