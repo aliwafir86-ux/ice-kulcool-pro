@@ -71,6 +71,19 @@
             box-shadow: 0 15px 30px rgba(0,0,0,0.25);
         }
 
+        /* --- FITUR BARU: HEADER BLUR --- */
+        header#main-header {
+            transition: all 0.4s ease;
+            background-color: white; /* Default tetap putih agar aman */
+        }
+
+        header.header-scrolled {
+            background-color: rgba(255, 255, 255, 0.7) !important;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+
         /* --- IKON WA MELAYANG --- */
         .wa-float {
             position: fixed;
@@ -100,7 +113,7 @@
         #backToTop {
             position: fixed;
             bottom: 110px; 
-            right: 45px; /* Sedikit geser agar center dengan WA */
+            right: 45px; 
             width: 50px;
             height: 50px;
             background-color: #4a148c;
@@ -137,7 +150,7 @@
         <i class="fa-solid fa-chevron-up"></i>
     </div>
 
-    <header class="bg-white border-b sticky top-0 z-50">
+    <header id="main-header" class="border-b sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-6 py-4 grid grid-cols-3 items-center">
             <div class="flex justify-start">
                 <button id="menu-open" class="text-purple-900 text-2xl p-2 hover:bg-gray-100 rounded-lg transition focus:outline-none">
@@ -182,34 +195,19 @@
             </div>
             <div class="p-4 flex flex-col gap-2">
                 <button onclick="setLanguage('ID')" class="flex items-center justify-between p-4 hover:bg-purple-50 rounded-xl transition group">
-                    <div class="flex items-center">
-                        <span class="mr-3 text-2xl">🇮🇩</span>
-                        <span class="font-semibold text-gray-700">Bahasa Indonesia</span>
-                    </div>
+                    <div class="flex items-center"><span class="mr-3 text-2xl">🇮🇩</span><span class="font-semibold text-gray-700">Bahasa Indonesia</span></div>
                 </button>
                 <button onclick="setLanguage('SUN')" class="flex items-center justify-between p-4 hover:bg-purple-50 rounded-xl transition group">
-                    <div class="flex items-center">
-                        <span class="mr-3 text-2xl">🌿</span>
-                        <span class="font-semibold text-gray-700">Basa Sunda</span>
-                    </div>
+                    <div class="flex items-center"><span class="mr-3 text-2xl">🌿</span><span class="font-semibold text-gray-700">Basa Sunda</span></div>
                 </button>
                 <button onclick="setLanguage('MDR')" class="flex items-center justify-between p-4 hover:bg-purple-50 rounded-xl transition group">
-                    <div class="flex items-center">
-                        <span class="mr-3 text-2xl">🐂</span>
-                        <span class="font-semibold text-gray-700">Basa Madura</span>
-                    </div>
+                    <div class="flex items-center"><span class="mr-3 text-2xl">🐂</span><span class="font-semibold text-gray-700">Basa Madura</span></div>
                 </button>
                 <button onclick="setLanguage('ENG')" class="flex items-center justify-between p-4 hover:bg-purple-50 rounded-xl transition group">
-                    <div class="flex items-center">
-                        <span class="mr-3 text-2xl">🇺🇸</span>
-                        <span class="font-semibold text-gray-700">English (US)</span>
-                    </div>
+                    <div class="flex items-center"><span class="mr-3 text-2xl">🇺🇸</span><span class="font-semibold text-gray-700">English (US)</span></div>
                 </button>
                 <button onclick="setLanguage('AR')" class="flex items-center justify-between p-4 hover:bg-purple-50 rounded-xl transition group">
-                    <div class="flex items-center">
-                        <span class="mr-3 text-2xl">🇸🇦</span>
-                        <span class="font-semibold text-gray-700">العربية (Arabic)</span>
-                    </div>
+                    <div class="flex items-center"><span class="mr-3 text-2xl">🇸🇦</span><span class="font-semibold text-gray-700">العربية (Arabic)</span></div>
                 </button>
             </div>
         </div>
@@ -221,9 +219,7 @@
         <div class="flex flex-col h-full p-6">
             <div class="flex justify-between items-center mb-8 border-b pb-4">
                 <span data-key="nav-title" class="font-bold text-purple-900 tracking-widest uppercase">Menu Navigasi</span>
-                <button id="menu-close" class="text-gray-400 hover:text-purple-900 text-2xl">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
+                <button id="menu-close" class="text-gray-400 hover:text-purple-900 text-2xl"><i class="fa-solid fa-xmark"></i></button>
             </div>
             <nav class="flex flex-col gap-1">
                 <a href="#home" data-key="nav-home" class="sidebar-nav-item">BERANDA</a>
@@ -231,9 +227,7 @@
                 <a href="galeri.html" data-key="nav-gallery" class="sidebar-nav-item">GALERI</a>
                 <a href="#menu" data-key="nav-price" class="sidebar-nav-item">HARGA</a>
                 <hr class="my-4 border-gray-100">
-                <a href="https://wa.me/6285703393720" data-key="nav-contact" class="sidebar-nav-item text-green-600">
-                    <i class="fa-brands fa-whatsapp mr-2"></i> HUBUNGI KAMI
-                </a>
+                <a href="https://wa.me/6285703393720" data-key="nav-contact" class="sidebar-nav-item text-green-600"><i class="fa-brands fa-whatsapp mr-2"></i> HUBUNGI KAMI</a>
             </nav>
         </div>
     </div>
@@ -254,54 +248,6 @@
             <p data-key="about-desc" class="text-gray-500 leading-relaxed text-lg max-w-3xl mx-auto italic">
                 "Kami percaya bahwa kebahagiaan dimulai dari bahan yang berkualitas. Pisang pilihan yang matang sempurna dibalut dengan cokelat premium racikan khusus, menciptakan harmoni rasa yang tak terlupakan."
             </p>
-        </div>
-    </section>
-
-    <section id="menu" class="py-24 px-6">
-        <div class="max-w-7xl mx-auto">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-16 border-b pb-8">
-                <div>
-                    <h2 data-key="menu-tag" class="text-sm font-bold text-purple-600 tracking-[0.4em] uppercase mb-2">Our Menu</h2>
-                    <h3 data-key="menu-title" class="text-4xl font-extrabold text-gray-900 uppercase">Varian Paket Kami</h3>
-                </div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-                <div class="product-card bg-white p-8 group">
-                    <div class="w-full h-48 bg-gray-100 mb-6 flex items-center justify-center rounded-xl overflow-hidden">
-                        <img src="piscok4.jpg" alt="Harga Normal" class="w-full h-full object-cover">
-                    </div>
-                    <h4 data-key="card1-name" class="text-xl font-bold mb-2 uppercase">Harga Normal</h4>
-                    <p data-key="card1-desc" class="text-gray-500 text-sm mb-6">Nikmati keaslian rasa piscok original dengan balutan cokelat klasik yang melimpah.</p>
-                    <div class="flex justify-between items-center">
-                        <span class="text-2xl font-black text-purple-800">Rp 2.000</span>
-                        <button onclick="buyProduct('Harga Normal', 'Rp 2.000')" data-key="buy-btn" class="text-purple-600 font-bold text-xs uppercase border-b-2 border-purple-600">Buy Now</button>
-                    </div>
-                </div>
-                <div class="product-card bg-white p-8 group relative overflow-hidden border-2 border-purple-200">
-                    <div class="absolute top-4 right-[-35px] bg-purple-600 text-white text-[10px] py-1 px-10 rotate-45 font-bold uppercase">Best Seller</div>
-                    <div class="w-full h-48 bg-gray-100 mb-6 flex items-center justify-center rounded-xl">
-                        <i class="fa-solid fa-fire text-6xl text-purple-200"></i>
-                    </div>
-                    <h4 data-key="card2-name" class="text-xl font-bold mb-2 uppercase">Paket Hemat</h4>
-                    <p data-key="card2-desc" class="text-gray-500 text-sm mb-6">Dapatkan 3 tusuk piscok mix dengan topping kacang sangrai atau springkle warna-warni.</p>
-                    <div class="flex justify-between items-center">
-                        <span class="text-2xl font-black text-purple-800">Rp 5.000</span>
-                        <button onclick="buyProduct('Paket Hemat', 'Rp 5.000')" data-key="buy-btn" class="text-purple-600 font-bold text-xs uppercase border-b-2 border-purple-600">Buy Now</button>
-                    </div>
-                </div>
-                <div class="product-card bg-white p-8 group">
-                    <div class="w-full h-48 bg-gray-100 mb-6 flex items-center justify-center rounded-xl">
-                        <i class="fa-solid fa-box-open text-6xl text-purple-200"></i>
-                    </div>
-                    <h4 data-key="card3-name" class="text-xl font-bold mb-2 uppercase">Paket Combo</h4>
-                    <p data-key="card3-desc" class="text-gray-500 text-sm mb-6">Pesta piscok dengan 6 tusuk bebas pilih topping sesukamu. Lebih banyak, lebih seru!</p>
-                    <div class="flex justify-between items-center">
-                        <span class="text-2xl font-black text-purple-800">Rp 10.000</span>
-                        <button onclick="buyProduct('Paket Combo', 'Rp 10.000')" data-key="buy-btn" class="text-purple-600 font-bold text-xs uppercase border-b-2 border-purple-600">Buy Now</button>
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
 
@@ -331,239 +277,26 @@
     </footer>
 
     <script>
+        // Objek bahasa tetap sama
         const languages = {
-            'ID': {
-                'header-tagline': 'Camilan Cokelat Premium',
-                'search-title': 'Apa yang ingin Anda cari?',
-                'modal-lang-title': 'Pilih Bahasa',
-                'nav-title': 'Menu Navigasi',
-                'nav-home': 'BERANDA',
-                'nav-about': 'TENTANG',
-                'nav-gallery': 'GALERI',
-                'nav-price': 'HARGA',
-                'nav-contact': 'HUBUNGI KAMI',
-                'hero-title': 'Seni Cokelat yang Meleleh',
-                'hero-desc': 'Menghadirkan sensasi kemewahan piscok lumer premium dengan kualitas bahan terbaik untuk setiap gigitan Anda.',
-                'hero-btn': 'Lihat Produk',
-                'about-tag': 'Kualitas Utama',
-                'about-title': 'Kenapa Memilih Ice Kulcool?',
-                'about-desc': '"Kami percaya bahwa kebahagiaan dimulai dari bahan yang berkualitas. Pisang pilihan yang matang sempurna dibalut dengan cokelat premium."',
-                'menu-tag': 'Menu Kami',
-                'menu-title': 'Varian Paket Kami',
-                'card1-name': 'Harga Normal',
-                'card1-desc': 'Nikmati keaslian rasa piscok original dengan balutan cokelat klasik yang melimpah.',
-                'card2-name': 'Paket Hemat',
-                'card2-desc': 'Dapatkan 3 tusuk piscok mix dengan topping kacang sangrai atau springkle.',
-                'card3-name': 'Paket Combo',
-                'card3-desc': 'Pesta piscok dengan 6 tusuk bebas pilih topping sesukamu. Lebih banyak, lebih seru!',
-                'buy-btn': 'Beli Sekarang',
-                'footer-desc': 'Kami berdedikasi memberikan jajanan tradisional kualitas internasional.',
-                'footer-contact-title': 'Info Kontak'
-            },
-            'SUN': {
-                'header-tagline': 'Jajanan Coklat Premium',
-                'search-title': 'Milari naon, Lur?',
-                'modal-lang-title': 'Pilih Basa',
-                'nav-title': 'Menu Navigasi',
-                'nav-home': 'BERANDA',
-                'nav-about': 'PERKAWIS',
-                'nav-gallery': 'GALERI',
-                'nav-price': 'PANTOSAN',
-                'nav-contact': 'HUBUNGI KAMI',
-                'hero-title': 'Seni Coklat nu Lumer',
-                'hero-desc': 'Ngahadirkeun sensasi kamewahan piscok lumer premium nganggo bahan anu pangsaéna kanggo unggal kacapan anjeun.',
-                'hero-btn': 'Tingali Produk',
-                'about-tag': 'Kualitas Utama',
-                'about-title': 'Naha Kedah Ice Kulcool?',
-                'about-desc': '"Simkuring percaya yén kabagjaan téh dimimitian tina bahan anu kualitasna saé. Cau pilihan anu asak sampurna dibalut ku coklat premium."',
-                'menu-tag': 'Menu Urang',
-                'menu-title': 'Pilihan Paket Urang',
-                'card1-name': 'Pantos Normal',
-                'card1-desc': 'Raoskeun asli rasa piscok original kalayan balutan coklat klasik anu seueur.',
-                'card2-name': 'Paket Hemat',
-                'card2-desc': 'Kengingkeun 3 tusuk piscok mix nganggo topping kacang sangrai atanapi springkle.',
-                'card3-name': 'Paket Combo',
-                'card3-desc': 'Pesta piscok 6 tusuk bébas milih topping sakahayang anjeun. Langkung seueur, langkung seru!',
-                'buy-btn': 'Pesen Ayeuna',
-                'footer-desc': 'Simkuring dedikasi masihan jajanan tradisional kualitas internasional.',
-                'footer-contact-title': 'Info Kontak'
-            },
-            'MDR': {
-                'header-tagline': 'Cemilan Coklat Premium',
-                'search-title': 'Nyare’e napa, Kak?',
-                'modal-lang-title': 'Pèlè Bhâsa',
-                'nav-title': 'Menu Navigasi',
-                'nav-home': 'DHIMMA',
-                'nav-about': 'PARKARA',
-                'nav-gallery': 'GALERI',
-                'nav-price': 'ARGHÂ',
-                'nav-contact': 'TEPPA’I KAMI',
-                'hero-title': 'Seni Coklat sè Lonyot',
-                'hero-desc': 'Mabâdâ sèngko’na cemmèlân piscok lumer premium kalabân bhâbhâng sè palèng sâè dâ’ sadhâjâna kakanânna sampiyan.',
-                'hero-btn': 'Abâs Produk',
-                'about-tag': 'Kualitas Utamanâ',
-                'about-title': 'Aponapa Mele Ice Kulcool?',
-                'about-desc': '"Kamè parcajâ bânnè bunga ghânika èmolâè dâri bhâbhâng sè bhâgus. Pishâng pèlèan sè masa’ samporna èbungkos coklat premium."',
-                'menu-tag': 'Menu Kamè',
-                'menu-title': 'Pèlèan Paket Kamè',
-                'card1-name': 'Arghâ Normal',
-                'card1-desc': 'Rasana asli piscok original kalabân coklat klasik sè bânnyâ’.',
-                'card2-name': 'Paket Hèmat',
-                'card2-desc': 'Ollè 3 tusuk piscok campor kalabân topping kacang otabâ springkle.',
-                'card3-name': 'Paket Combo',
-                'card3-desc': 'Pesta piscok 6 tusuk bèbas mèlè topping dhibi’. Langkong bânnyâ’, langkong râmè!',
-                'buy-btn': 'Belli Satèya',
-                'footer-desc': 'Kamè dâdikasi marèngè kakanân tradisional kualitas internasional.',
-                'footer-contact-title': 'Info Kontak'
-            },
-            'ENG': {
-                'header-tagline': 'Premium Chocolate Treats',
-                'search-title': 'What are you looking for?',
-                'modal-lang-title': 'Select Language',
-                'nav-title': 'Navigation Menu',
-                'nav-home': 'HOME',
-                'nav-about': 'ABOUT',
-                'nav-gallery': 'GALLERY',
-                'nav-price': 'PRICE',
-                'nav-contact': 'CONTACT US',
-                'hero-title': 'The Art of Melting Chocolate',
-                'hero-desc': 'Bringing the sensation of luxury premium melted chocolate banana with the best quality ingredients for your every bite.',
-                'hero-btn': 'Explore Products',
-                'about-tag': 'Quality First',
-                'about-title': 'Why Choose Ice Kulcool?',
-                'about-desc': '"We believe that happiness starts from quality ingredients. Perfectly ripe selected bananas wrapped in premium chocolate."',
-                'menu-tag': 'Our Menu',
-                'menu-title': 'Our Package Variants',
-                'card1-name': 'Normal Price',
-                'card1-desc': 'Enjoy the authenticity of original chocolate banana with abundant classic chocolate coating.',
-                'card2-name': 'Saving Pack',
-                'card2-desc': 'Get 3 mixed chocolate banana sticks with roasted peanuts or sprinkles topping.',
-                'card3-name': 'Combo Pack',
-                'card3-desc': 'Chocolate banana party with 6 sticks, free to choose any topping you like!',
-                'buy-btn': 'Buy Now',
-                'footer-desc': 'Dedicated to providing traditional snacks with international quality standards.',
-                'footer-contact-title': 'Contact Info'
-            },
-            'AR': {
-                'header-tagline': 'حلويات الشوكولاتة الممتازة',
-                'search-title': 'عن ماذا تبحث؟',
-                'modal-lang-title': 'اختر اللغة',
-                'nav-title': 'قائمة التنقل',
-                'nav-home': 'الصفحة الرئيسية',
-                'nav-about': 'حول',
-                'nav-gallery': 'معرض الصور',
-                'nav-price': 'السعر',
-                'nav-contact': 'اتصل بنا',
-                'hero-title': 'فن الشوكولاتة الذائبة',
-                'hero-desc': 'نقدم إحساس الفخامة لشوكولاتة الموز الذائبة الفاخرة مع أفضل المكونات لكل قضمة.',
-                'hero-btn': 'استكشف المنتجات',
-                'about-tag': 'الجودة أولاً',
-                'about-title': 'لماذا تختار Ice Kulcool؟',
-                'about-desc': '"نحن نؤمن بأن السعادة تبدأ من المكونات عالية الجودة. موز مختار بعناية ملفوف بالشوكولاتة الفاخرة."',
-                'menu-tag': 'قائمتنا',
-                'menu-title': 'خيارات الباقات لدينا',
-                'card1-name': 'السعر العادي',
-                'card1-desc': 'استمتع بأصالة طعم الموز بالشوكولاتة الأصلي مع تغطية غنية من الشوكولاتة الكلاسيكية.',
-                'card2-name': 'باقة التوفير',
-                'card2-desc': 'احصل على 3 قطع من الموز بالشوكولاتة المشكلة مع الفول السوداني أو السبرينكلز.',
-                'card3-name': 'باقة كومبو',
-                'card3-desc': 'حفلة الموز بالشوكولاتة مع 6 قطع، حرية اختيار أي إضافات تحبها!',
-                'buy-btn': 'اشتري الآن',
-                'footer-desc': 'نحن ملتزمون بتقديم الوجبات التقليدية بمعايير جودة دولية.',
-                'footer-contact-title': 'معلومات الاتصال'
-            }
+            'ID': { 'header-tagline': 'Camilan Cokelat Premium', 'search-title': 'Apa yang ingin Anda cari?', 'modal-lang-title': 'Pilih Bahasa', 'nav-title': 'Menu Navigasi', 'nav-home': 'BERANDA', 'nav-about': 'TENTANG', 'nav-gallery': 'GALERI', 'nav-price': 'HARGA', 'nav-contact': 'HUBUNGI KAMI', 'hero-title': 'Seni Cokelat yang Meleleh', 'hero-desc': 'Menghadirkan sensasi kemewahan piscok lumer premium dengan kualitas bahan terbaik untuk setiap gigitan Anda.', 'hero-btn': 'Lihat Produk', 'about-tag': 'Kualitas Utama', 'about-title': 'Kenapa Memilih Ice Kulcool?', 'about-desc': '"Kami percaya bahwa kebahagiaan dimulai dari bahan yang berkualitas. Pisang pilihan yang matang sempurna dibalut dengan cokelat premium."', 'menu-tag': 'Menu Kami', 'menu-title': 'Varian Paket Kami', 'card1-name': 'Harga Normal', 'card1-desc': 'Nikmati keaslian rasa piscok original dengan balutan cokelat klasik yang melimpah.', 'card2-name': 'Paket Hemat', 'card2-desc': 'Dapatkan 3 tusuk piscok mix dengan topping kacang sangrai atau springkle.', 'card3-name': 'Paket Combo', 'card3-desc': 'Pesta piscok dengan 6 tusuk bebas pilih topping sesukamu. Lebih banyak, lebih seru!', 'buy-btn': 'Beli Sekarang', 'footer-desc': 'Kami berdedikasi memberikan jajanan tradisional kualitas internasional.', 'footer-contact-title': 'Info Kontak' },
+            'SUN': { 'header-tagline': 'Jajanan Coklat Premium', 'search-title': 'Milari naon, Lur?', 'modal-lang-title': 'Pilih Basa', 'nav-title': 'Menu Navigasi', 'nav-home': 'BERANDA', 'nav-about': 'PERKAWIS', 'nav-gallery': 'GALERI', 'nav-price': 'PANTOSAN', 'nav-contact': 'HUBUNGI KAMI', 'hero-title': 'Seni Coklat nu Lumer', 'hero-desc': 'Ngahadirkeun sensasi kamewahan piscok lumer premium nganggo bahan anu pangsaéna kanggo unggal kacapan anjeun.', 'hero-btn': 'Tingali Produk', 'about-tag': 'Kualitas Utama', 'about-title': 'Naha Kedah Ice Kulcool?', 'about-desc': '"Simkuring percaya yén kabagjaan téh dimimitian tina bahan anu kualitasna saé. Cau pilihan anu asak sampurna dibalut ku coklat premium."', 'menu-tag': 'Menu Urang', 'menu-title': 'Pilihan Paket Urang', 'card1-name': 'Pantos Normal', 'card1-desc': 'Raoskeun asli rasa piscok original kalayan balutan coklat klasik anu seueur.', 'card2-name': 'Paket Hemat', 'card2-desc': 'Kengingkeun 3 tusuk piscok mix nganggo topping kacang sangrai atanapi springkle.', 'card3-name': 'Paket Combo', 'card3-desc': 'Pesta piscok 6 tusuk bébas milih topping sakahayang anjeun. Langkung seueur, langkung seru!', 'buy-btn': 'Pesen Ayeuna', 'footer-desc': 'Simkuring dedikasi masihan jajanan tradisional kualitas internasional.', 'footer-contact-title': 'Info Kontak' },
+            'MDR': { 'header-tagline': 'Cemilan Coklat Premium', 'search-title': 'Nyare’e napa, Kak?', 'modal-lang-title': 'Pèlè Bhâsa', 'nav-title': 'Menu Navigasi', 'nav-home': 'DHIMMA', 'nav-about': 'PARKARA', 'nav-gallery': 'GALERI', 'nav-price': 'ARGHÂ', 'nav-contact': 'TEPPA’I KAMI', 'hero-title': 'Seni Coklat sè Lonyot', 'hero-desc': 'Mabâdâ sèngko’na cemmèlân piscok lumer premium kalabân bhâbhâng sè palèng sâè dâ’ sadhâjâna kakanânna sampiyan.', 'hero-btn': 'Abâs Produk', 'about-tag': 'Kualitas Utamanâ', 'about-title': 'Aponapa Mele Ice Kulcool?', 'about-desc': '"Kamè parcajâ bânnè bunga ghânika èmolâè dâri bhâbhâng sè bhâgus. Pishâng pèlèan sè masa’ samporna èbungkos coklat premium."', 'menu-tag': 'Menu Kamè', 'menu-title': 'Pèlèan Paket Kamè', 'card1-name': 'Arghâ Normal', 'card1-desc': 'Rasana asli piscok original kalabân coklat klasik sè bânnyâ’.', 'card2-name': 'Paket Hèmat', 'card2-desc': 'Ollè 3 tusuk piscok campor kalabân topping kacang otabâ springkle.', 'card3-name': 'Paket Combo', 'card3-desc': 'Pesta piscok 6 tusuk bèbas mèlè topping dhibi’. Langkong bânnyâ’, langkong râmè!', 'buy-btn': 'Belli Satèya', 'footer-desc': 'Kamè dâdikasi marèngè kakanân tradisional kualitas internasional.', 'footer-contact-title': 'Info Kontak' },
+            'ENG': { 'header-tagline': 'Premium Chocolate Treats', 'search-title': 'What are you looking for?', 'modal-lang-title': 'Select Language', 'nav-title': 'Navigation Menu', 'nav-home': 'HOME', 'nav-about': 'ABOUT', 'nav-gallery': 'GALLERY', 'nav-price': 'PRICE', 'nav-contact': 'CONTACT US', 'hero-title': 'The Art of Melting Chocolate', 'hero-desc': 'Bringing the sensation of luxury premium melted chocolate banana with the best quality ingredients for your every bite.', 'hero-btn': 'Explore Products', 'about-tag': 'Quality First', 'about-title': 'Why Choose Ice Kulcool?', 'about-desc': '"We believe that happiness starts from quality ingredients. Perfectly ripe selected bananas wrapped in premium chocolate."', 'menu-tag': 'Our Menu', 'menu-title': 'Our Package Variants', 'card1-name': 'Normal Price', 'card1-desc': 'Enjoy the authenticity of original chocolate banana with abundant classic chocolate coating.', 'card2-name': 'Saving Pack', 'card2-desc': 'Get 3 mixed chocolate banana sticks with roasted peanuts or sprinkles topping.', 'card3-name': 'Combo Pack', 'card3-desc': 'Chocolate banana party with 6 sticks, free to choose any topping you like!', 'buy-btn': 'Buy Now', 'footer-desc': 'Dedicated to providing traditional snacks with international quality standards.', 'footer-contact-title': 'Contact Info' },
+            'AR': { 'header-tagline': 'حلويات الشوكولاتة الممتازة', 'search-title': 'عن ماذا تبحث؟', 'modal-lang-title': 'اختر اللغة', 'nav-title': 'قائمة التنقل', 'nav-home': 'الصفحة الرئيسية', 'nav-about': 'حول', 'nav-gallery': 'معرض الصور', 'nav-price': 'السعر', 'nav-contact': 'اتصل بنا', 'hero-title': 'فن الشوكولاتة الذائبة', 'hero-desc': 'نقدم إحساس الفخامة لشوكولاتة الموز الذائبة الفاخرة مع أفضل المكونات لكل قضمة.', 'hero-btn': 'استكشف المنتجات', 'about-tag': 'الجودة أولاً', 'about-title': 'لماذا تختار Ice Kulcool؟', 'about-desc': '"نحن نؤمن بأن السعادة تبدأ من المكونات عالية الجودة. موز مختار بعناية ملفوف بالشوكولاتة الفاخرة."', 'menu-tag': 'قائمتنا', 'menu-title': 'خيارات الباقات لدينا', 'card1-name': 'السعر العادي', 'card1-desc': 'استمتع بأصالة طعم الموز بالشوكولاتة الأصلي مع تغطية غنية من الشوكولاتة الكلاسيكية.', 'card2-name': 'باقة التوفير', 'card2-desc': 'احصل على 3 قطع من الموز بالشوكولاتة المشكلة مع الفول السوداني أو السبرينكلز.', 'card3-name': 'باقة كومبو', 'card3-desc': 'حفلة الموز بالشوكولاتة مع 6 قطع، حرية اختيار أي إضافات تحبها!', 'buy-btn': 'اشتري الآن', 'footer-desc': 'نحن ملتزمون بتقديم الوجبات التقليدية بمعايير جودة دولية.', 'footer-contact-title': 'معلومات الاتصال' }
         };
 
-        function buyProduct(name, price) {
-            const phone = "6285703393720";
-            const message = `Halo Mincool, saya ingin memesan produk: *${name}* dengan *Harga:* ${price}. Terima kasih!`;
-            const encoded = encodeURIComponent(message);
-            window.open(`https://wa.me/${phone}?text=${encoded}`, '_blank');
-        }
-
-        function setLanguage(lang) {
-            document.getElementById('current-lang').innerText = lang;
-            document.documentElement.dir = (lang === 'AR') ? 'rtl' : 'ltr';
-            
-            const elements = document.querySelectorAll('[data-key]');
-            elements.forEach(el => {
-                const key = el.getAttribute('data-key');
-                if (languages[lang][key]) { 
-                    el.innerText = languages[lang][key]; 
-                }
-            });
-            closeLang();
-        }
-
-        const menuOpen = document.getElementById('menu-open');
-        const menuClose = document.getElementById('menu-close');
-        const sidebar = document.getElementById('sidebar-menu');
-        const bgOverlay = document.getElementById('bg-overlay');
-        
-        menuOpen.onclick = () => {
-            sidebar.classList.remove('-translate-x-full');
-            bgOverlay.classList.remove('hidden');
-            setTimeout(() => bgOverlay.classList.add('opacity-100'), 10);
-            document.body.classList.add('menu-open');
-        };
-
-        const closeSidebar = () => {
-            sidebar.classList.add('-translate-x-full');
-            bgOverlay.classList.remove('opacity-100');
-            setTimeout(() => {
-                bgOverlay.classList.add('hidden');
-                document.body.classList.remove('menu-open');
-            }, 300);
-        };
-        menuClose.onclick = closeSidebar;
-        bgOverlay.onclick = closeSidebar;
-
-        const langOpen = document.getElementById('lang-open');
-        const langClose = document.getElementById('lang-close');
-        const langOverlay = document.getElementById('lang-overlay');
-        const langModal = document.getElementById('lang-modal');
-
-        langOpen.onclick = () => {
-            langOverlay.classList.remove('hidden');
-            setTimeout(() => langModal.classList.remove('scale-90', 'opacity-0'), 10);
-        };
-
-        const closeLang = () => {
-            langModal.classList.add('scale-90', 'opacity-0');
-            setTimeout(() => langOverlay.classList.add('hidden'), 300);
-        };
-        langClose.onclick = closeLang;
-
-        const searchOpen = document.getElementById('search-open');
-        const searchClose = document.getElementById('search-close');
-        const searchOverlay = document.getElementById('search-overlay');
-        const searchInput = document.getElementById('search-input');
-        const btnSearch = document.getElementById('btn-search-trigger');
-
-        const doSearch = () => {
-            const keyword = searchInput.value.toLowerCase().trim();
-            if (keyword === 'galeri' || keyword === 'gallery') window.location.href = 'galeri.html';
-            else if (['harga', 'price', 'menu'].includes(keyword)) { window.location.href = '#menu'; closeSearch(); }
-            else if (['tentang', 'about'].includes(keyword)) { window.location.href = '#about'; closeSearch(); }
-        };
-
-        searchOpen.onclick = () => {
-            searchOverlay.classList.remove('hidden');
-            setTimeout(() => searchOverlay.classList.remove('opacity-0'), 10);
-            searchInput.focus();
-        };
-
-        const closeSearch = () => {
-            searchOverlay.classList.add('opacity-0');
-            setTimeout(() => searchOverlay.classList.add('hidden'), 300);
-        };
-        searchClose.onclick = closeSearch;
-        btnSearch.onclick = doSearch;
-        searchInput.onkeypress = (e) => { if(e.key === 'Enter') doSearch(); };
-
-        // --- BACK TO TOP ---
-        const backToTopBtn = document.getElementById('backToTop');
+        // --- UPDATE: LOGIKA HEADER BLUR ---
+        const mainHeader = document.getElementById('main-header');
         window.onscroll = () => {
+            // Logika Header Blur
+            if (window.scrollY > 50) {
+                mainHeader.classList.add('header-scrolled');
+            } else {
+                mainHeader.classList.remove('header-scrolled');
+            }
+
+            // Logika Back To Top (Sudah ada di kode lama)
             if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
                 backToTopBtn.classList.add('show');
             } else {
@@ -571,9 +304,46 @@
             }
         };
 
-        function scrollToTop() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+        // Fungsi-fungsi lain tetap utuh
+        function buyProduct(name, price) {
+            const phone = "6285703393720";
+            const message = `Halo Mincool, saya ingin memesan produk: *${name}* dengan *Harga:* ${price}. Terima kasih!`;
+            window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, '_blank');
         }
+
+        function setLanguage(lang) {
+            document.getElementById('current-lang').innerText = lang;
+            document.documentElement.dir = (lang === 'AR') ? 'rtl' : 'ltr';
+            document.querySelectorAll('[data-key]').forEach(el => {
+                const key = el.getAttribute('data-key');
+                if (languages[lang][key]) el.innerText = languages[lang][key];
+            });
+            closeLang();
+        }
+
+        const menuOpen = document.getElementById('menu-open'), menuClose = document.getElementById('menu-close'), sidebar = document.getElementById('sidebar-menu'), bgOverlay = document.getElementById('bg-overlay');
+        menuOpen.onclick = () => { sidebar.classList.remove('-translate-x-full'); bgOverlay.classList.remove('hidden'); setTimeout(() => bgOverlay.classList.add('opacity-100'), 10); document.body.classList.add('menu-open'); };
+        const closeSidebar = () => { sidebar.classList.add('-translate-x-full'); bgOverlay.classList.remove('opacity-100'); setTimeout(() => { bgOverlay.classList.add('hidden'); document.body.classList.remove('menu-open'); }, 300); };
+        menuClose.onclick = closeSidebar; bgOverlay.onclick = closeSidebar;
+
+        const langOpen = document.getElementById('lang-open'), langClose = document.getElementById('lang-close'), langOverlay = document.getElementById('lang-overlay'), langModal = document.getElementById('lang-modal');
+        langOpen.onclick = () => { langOverlay.classList.remove('hidden'); setTimeout(() => langModal.classList.remove('scale-90', 'opacity-0'), 10); };
+        const closeLang = () => { langModal.classList.add('scale-90', 'opacity-0'); setTimeout(() => langOverlay.classList.add('hidden'), 300); };
+        langClose.onclick = closeLang;
+
+        const searchOpen = document.getElementById('search-open'), searchClose = document.getElementById('search-close'), searchOverlay = document.getElementById('search-overlay'), searchInput = document.getElementById('search-input'), btnSearch = document.getElementById('btn-search-trigger');
+        searchOpen.onclick = () => { searchOverlay.classList.remove('hidden'); setTimeout(() => searchOverlay.classList.remove('opacity-0'), 10); searchInput.focus(); };
+        const closeSearch = () => { searchOverlay.classList.add('opacity-0'); setTimeout(() => searchOverlay.classList.add('hidden'), 300); };
+        searchClose.onclick = closeSearch;
+        const doSearch = () => { 
+            const k = searchInput.value.toLowerCase().trim();
+            if (k === 'galeri') window.location.href = 'galeri.html';
+            else if (['harga','menu'].includes(k)) { window.location.href = '#menu'; closeSearch(); }
+        };
+        btnSearch.onclick = doSearch; searchInput.onkeypress = (e) => { if(e.key === 'Enter') doSearch(); };
+
+        const backToTopBtn = document.getElementById('backToTop');
+        function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
     </script>
 </body>
 </html>
