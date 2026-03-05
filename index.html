@@ -194,6 +194,12 @@
                         <span class="font-semibold text-gray-700">English (US)</span>
                     </div>
                 </button>
+                <button onclick="setLanguage('AR')" class="flex items-center justify-between p-4 hover:bg-purple-50 rounded-xl transition group">
+                    <div class="flex items-center">
+                        <span class="mr-3 text-2xl">🇸🇦</span>
+                        <span class="font-semibold text-gray-700">العربية (Arabic)</span>
+                    </div>
+                </button>
             </div>
         </div>
     </div>
@@ -373,7 +379,35 @@
                 'footer-contact-title': 'Contact Info'
             }
         };
-
+        'AR': {
+                'header-tagline': 'حلويات الشوكولاتة الممتازة',
+                'search-title': 'عن ماذا تبحث؟',
+                'modal-lang-title': 'اختر اللغة',
+                'nav-title': 'قائمة التنقل',
+                'nav-home': 'الصفحة الرئيسية',
+                'nav-about': 'حول',
+                'nav-gallery': 'معرض الصور',
+                'nav-price': 'السعر',
+                'nav-contact': 'اتصل بنا',
+                'hero-title': 'فن الشوكولاتة الذائبة',
+                'hero-desc': 'نقدم إحساس الفخامة لشوكولاتة الموز الذائبة الفاخرة مع أفضل المكونات لكل قضمة.',
+                'hero-btn': 'استكشف المنتجات',
+                'about-tag': 'الجودة أولاً',
+                'about-title': 'لماذا تختار Ice Kulcool؟',
+                'about-desc': '"نحن نؤمن بأن السعادة تبدأ من المكونات عالية الجودة. موز مختار بعناية ملفوف بالشوكولاتة الفاخرة."',
+                'menu-tag': 'قائمتنا',
+                'menu-title': 'خيارات الباقات لدينا',
+                'card1-name': 'السعر العادي',
+                'card1-desc': 'استمتع بأصالة طعم الموز بالشوكولاتة الأصلي مع تغطية غنية من الشوكولاتة الكلاسيكية.',
+                'card2-name': 'باقة التوفير',
+                'card2-desc': 'احصل على 3 قطع من الموز بالشوكولاتة المشكلة مع الفول السوداني أو السبرينكلز.',
+                'card3-name': 'باقة كومبو',
+                'card3-desc': 'حفلة الموز بالشوكولاتة مع 6 قطع، حرية اختيار أي إضافات تحبها!',
+                'buy-btn': 'اشتري الآن',
+                'footer-desc': 'نحن ملتزمون بتقديم الوجبات التقليدية بمعايير جودة دولية.',
+                'footer-contact-title': 'معلومات الاتصال'
+            }
+         };
         // --- FUNGSI PESAN SESUAI PERMINTAAN ANDA ---
         function buyProduct(name, price) {
             const phone = "6285703393720";
@@ -384,10 +418,16 @@
 
         function setLanguage(lang) {
             document.getElementById('current-lang').innerText = lang;
+            
+            // Mengatur arah teks (RTL untuk Arab, LTR untuk lainnya)
+            document.documentElement.dir = (lang === 'AR') ? 'rtl' : 'ltr';
+            
             const elements = document.querySelectorAll('[data-key]');
             elements.forEach(el => {
                 const key = el.getAttribute('data-key');
-                if (languages[lang][key]) { el.innerText = languages[lang][key]; }
+                if (languages[lang][key]) { 
+                    el.innerText = languages[lang][key]; 
+                }
             });
             closeLang();
         }
