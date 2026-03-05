@@ -12,19 +12,40 @@
         * { font-family: 'Montserrat', sans-serif; }
         html { scroll-behavior: smooth; }
         
-        /* --- BACKGROUND HERO --- */
+        /* --- HEADER TRANSPARAN --- */
+        header {
+            transition: all 0.3s ease;
+            background-color: transparent !important; /* Awal transparan */
+            border-bottom: 1px solid rgba(255,255,255,0.1) !important;
+        }
+
+        /* Saat di scroll */
+        header.scrolled {
+            background-color: white !important;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-bottom: none !important;
+        }
+
+        /* Perubahan warna teks saat scroll */
+        header.scrolled .text-purple-900 {
+            color: #4a148c !important;
+        }
+        
+        /* Default teks header saat transparan (putih agar terbaca di atas hero) */
+        header:not(.scrolled) .text-purple-900,
+        header:not(.scrolled) #current-lang {
+            color: white !important;
+        }
+
+        /* Logo tetap asli tanpa filter */
+        img { filter: none !important; }
+
         .hero-bg {
-            /* Linear gradient hanya untuk background image agar teks terbaca, logo tidak terkena */
-            background: linear-gradient(rgba(74, 20, 140, 0.4), rgba(74, 20, 140, 0.4)), url('piscok2.png');
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('piscok2.png');
             background-size: cover;
             background-position: center;
             height: 80vh;
-        }
-
-        /* --- LOGO STYLE (NORMAL/NO FILTER) --- */
-        .logo-img {
-            filter: none !important; /* Memastikan tidak ada filter */
-            mix-blend-mode: normal; /* Memastikan mode blending standar */
+            margin-top: -85px; /* Menarik hero ke atas header */
         }
 
         .product-card {
@@ -143,16 +164,16 @@
         <i class="fa-solid fa-chevron-up"></i>
     </div>
 
-    <header class="bg-white border-b sticky top-0 z-50">
+    <header id="navbar" class="sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-6 py-4 grid grid-cols-3 items-center">
             <div class="flex justify-start">
-                <button id="menu-open" class="text-purple-900 text-2xl p-2 hover:bg-gray-100 rounded-lg transition focus:outline-none">
+                <button id="menu-open" class="text-purple-900 text-2xl p-2 hover:bg-gray-100/20 rounded-lg transition focus:outline-none">
                     <i class="fa-solid fa-bars-staggered"></i>
                 </button>
             </div>
 
             <div class="flex flex-col items-center text-center">
-                <img src="logo1.png" alt="Ice Kulcool Logo" class="w-12 h-12 object-contain logo-img">
+                <img src="logo1.png" alt="Logo" class="w-12 h-12 object-contain">
                 <span class="block text-lg font-extrabold tracking-widest text-purple-900 uppercase italic leading-none mt-1">ICE KULCOOL</span>
                 <span data-key="header-tagline" class="hidden sm:block text-[8px] tracking-[0.2em] text-gray-400 uppercase leading-none">Premium Chocolate Treats</span>
             </div>
@@ -315,7 +336,7 @@
         <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-16 text-center md:text-left">
             <div>
                 <div class="flex items-center justify-center md:justify-start mb-6 gap-3">
-                    <img src="logo1.png" alt="Logo Ice Kulcool" class="w-10 h-10 object-contain logo-img">
+                    <img src="logo1.png" alt="Logo Ice Kulcool" class="w-10 h-10 object-contain">
                     <h4 class="text-xl font-extrabold tracking-widest uppercase">ICE KULCOOL.</h4>
                 </div>
                 <p data-key="footer-desc" class="text-gray-400 text-sm leading-relaxed">Kami berdedikasi untuk memberikan pengalaman menikmati jajanan tradisional dengan standar kualitas internasional.</p>
@@ -337,7 +358,26 @@
     </footer>
 
     <script>
-        // ... (Script Anda dari file asli tetap di sini) ...
+        // SCRIPT TAMBAHAN UNTUK HEADER TRANSPARAN
+        window.onscroll = function() {
+            const navbar = document.getElementById("navbar");
+            const backToTopBtn = document.getElementById('backToTop');
+            
+            // Logika Header
+            if (window.scrollY > 50) {
+                navbar.classList.add("scrolled");
+            } else {
+                navbar.classList.remove("scrolled");
+            }
+
+            // Logika Back to Top (Tetap sesuai kode asli)
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        };
+
         const languages = {
             'ID': {
                 'header-tagline': 'Camilan Cokelat Premium',
@@ -484,6 +524,7 @@
         function buyProduct(name, price) {
             const phone = "6285703393720";
             let topping = "";
+
             if (name === 'Paket Hemat') {
                 topping = prompt("Pilih Topping (Kacang Sangrai / Sprinkle):", "Kacang");
             } else if (name === 'Paket Combo') {
@@ -491,14 +532,18 @@
             } else {
                 topping = "Original Chocolate";
             }
+
             if (topping === null) return; 
+
             const message = `Halo Mincool! 👋%0A%0ASaya ingin memesan produk:%0A*Paket:* ${name}%0A*Topping:* ${topping}%0A*Harga:* ${price}%0A%0ATerima kasih!`;
+            const encoded = encodeURIComponent(message);
             window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
         }
 
         function setLanguage(lang) {
             document.getElementById('current-lang').innerText = lang;
             document.documentElement.dir = (lang === 'AR') ? 'rtl' : 'ltr';
+            
             const elements = document.querySelectorAll('[data-key]');
             elements.forEach(el => {
                 const key = el.getAttribute('data-key');
@@ -574,15 +619,6 @@
         searchClose.onclick = closeSearch;
         btnSearch.onclick = doSearch;
         searchInput.onkeypress = (e) => { if(e.key === 'Enter') doSearch(); };
-
-        const backToTopBtn = document.getElementById('backToTop');
-        window.onscroll = () => {
-            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-                backToTopBtn.classList.add('show');
-            } else {
-                backToTopBtn.classList.remove('show');
-            }
-        };
 
         function scrollToTop() {
             window.scrollTo({ top: 0, behavior: 'smooth' });
