@@ -12,13 +12,26 @@
         * { font-family: 'Montserrat', sans-serif; }
         html { scroll-behavior: smooth; }
         
-        .hero-bg {
-           background: linear-gradient(rgba(74, 20, 140, 0.4), rgba(74, 20, 140, 0.4)), url('piscok2.png');
-          background-size: cover;
-          background-position: center;
-            height: 80vh;
-        }
- 
+hero-bg {
+    background: linear-gradient(rgba(74, 20, 140, 0.4), rgba(74, 20, 140, 0.4)), url('piscok2.png');
+    background-size: cover;
+    background-position: center;
+    height: 85vh; /* Sedikit ditambah tingginya agar proporsional */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 80px; /* KODE INI yang akan mendorong konten ke bawah agar tidak tertutup header */
+}
+
+/* Pastikan z-index header lebih tinggi dari konten lainnya */
+header {
+    z-index: 1000 !important;
+}
+ @media (max-width: 640px) {
+    .hero-bg {
+        padding-top: 100px; /* Jarak lebih besar untuk layar kecil */
+    }
+}
         .product-card {
             border: 1px solid #eee;
            transition: all 0.4s ease;
