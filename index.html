@@ -53,7 +53,6 @@
             transition: all 0.3s ease-in-out;
         }
 
-        /* Tombol Explore Elegan & Rounded */
         .btn-elegant {
             background: white;
             color: #4a148c;
@@ -97,11 +96,11 @@
             color: white;
         }
 
-        /* --- TOMBOL BACK TO TOP (KODE BARU 1) --- */
+        /* --- TOMBOL BACK TO TOP --- */
         #backToTop {
             position: fixed;
             bottom: 110px; 
-            right: 40px;
+            right: 45px; /* Sedikit geser agar center dengan WA */
             width: 50px;
             height: 50px;
             background-color: #4a148c;
@@ -336,7 +335,6 @@
                 'hero-btn': 'Lihat Produk',
                 'about-tag': 'Kualitas Utama',
                 'about-title': 'Kenapa Memilih Ice Kulcool?',
-                'about-tagline': 'Premium Chocolate Treats',
                 'about-desc': '"Kami percaya bahwa kebahagiaan dimulai dari bahan yang berkualitas. Pisang pilihan yang matang sempurna dibalut dengan cokelat premium."',
                 'menu-tag': 'Menu Kami',
                 'menu-title': 'Varian Paket Kami',
@@ -377,9 +375,8 @@
                 'buy-btn': 'Buy Now',
                 'footer-desc': 'Dedicated to providing traditional snacks with international quality standards.',
                 'footer-contact-title': 'Contact Info'
-            }
-        };
-        'AR': {
+            },
+            'AR': {
                 'header-tagline': 'حلويات الشوكولاتة الممتازة',
                 'search-title': 'عن ماذا تبحث؟',
                 'modal-lang-title': 'اختر اللغة',
@@ -407,19 +404,17 @@
                 'footer-desc': 'نحن ملتزمون بتقديم الوجبات التقليدية بمعايير جودة دولية.',
                 'footer-contact-title': 'معلومات الاتصال'
             }
-         };
-        // --- FUNGSI PESAN SESUAI PERMINTAAN ANDA ---
+        };
+
         function buyProduct(name, price) {
             const phone = "6285703393720";
-            const message = `Halo Mincool, saya ingin memesan produk: *${name}:* ${name} *Harga:* ${price} Terima kasih!`;
+            const message = `Halo Mincool, saya ingin memesan produk: *${name}* dengan *Harga:* ${price}. Terima kasih!`;
             const encoded = encodeURIComponent(message);
             window.open(`https://wa.me/${phone}?text=${encoded}`, '_blank');
         }
 
         function setLanguage(lang) {
             document.getElementById('current-lang').innerText = lang;
-            
-            // Mengatur arah teks (RTL untuk Arab, LTR untuk lainnya)
             document.documentElement.dir = (lang === 'AR') ? 'rtl' : 'ltr';
             
             const elements = document.querySelectorAll('[data-key]');
@@ -498,9 +493,8 @@
         btnSearch.onclick = doSearch;
         searchInput.onkeypress = (e) => { if(e.key === 'Enter') doSearch(); };
 
-        // --- FUNGSI BACK TO TOP (KODE BARU 3) ---
+        // --- BACK TO TOP ---
         const backToTopBtn = document.getElementById('backToTop');
-
         window.onscroll = () => {
             if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
                 backToTopBtn.classList.add('show');
@@ -510,10 +504,7 @@
         };
 
         function scrollToTop() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     </script>
 </body>
