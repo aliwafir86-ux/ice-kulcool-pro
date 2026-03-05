@@ -11,8 +11,8 @@
     <style>
         * { font-family: 'Montserrat', sans-serif; }
         html { scroll-behavior: smooth; }
-        
-hero-bg {
+
+.hero-bg {
     background: linear-gradient(rgba(74, 20, 140, 0.4), rgba(74, 20, 140, 0.4)), url('piscok2.png');
     background-size: cover;
     background-position: center;
@@ -42,7 +42,7 @@ header {
            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
             transform: translateY(-5px);
         }
- 
+
        .sidebar-nav-item {
             color: #4a148c;
             font-size: 1.1rem;
@@ -57,15 +57,15 @@ header {
           background-color: #f3e5f5;
             color: #7b1fa2;
         }
-        
+
         body.menu-open {
             overflow: hidden;
         }
- 
+
       .modal-transition {
            transition: all 0.3s ease-in-out;
         }
- 
+
         .btn-elegant {
            background: white;
             color: #4a148c;
@@ -83,7 +83,7 @@ header {
            background: #f3e5f5;
            box-shadow: 0 15px 30px rgba(0,0,0,0.25);
         }
- 
+
         /* --- IKON WA MELAYANG --- */
         .wa-float {
             position: fixed;
@@ -108,11 +108,11 @@ header {
           background-color: #128c7e;
             color: white;
         }
- 
+
         /* --- TOMBOL BACK TO TOP --- */
         #backToTop {
             position: fixed;
-            bottom: 110px; 
+            bottom: 110px;
             right: 45px; /* Sedikit geser agar center dengan WA */
             width: 50px;
             height: 50px;
@@ -138,13 +138,13 @@ header {
           background-color: #7b1fa2;
             transform: translateY(-5px);
         }
- 
+
         header.header-scrolled {
-            background-color: rgba(255, 255, 255, 0.7); 
-            backdrop-filter: blur(10px); 
-            -webkit-backdrop-filter: blur(10px); 
-            border-color: rgba(229, 231, 235, 0.5); 
-            padding-top: 0.5rem; 
+            background-color: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-color: rgba(229, 231, 235, 0.5);
+            padding-top: 0.5rem;
             padding-bottom: 0.5rem;
          }
 
@@ -166,29 +166,29 @@ header {
     </style>
 </head>
 <body class="bg-white text-gray-900">
- 
+
     <a href="https://wa.me/6285703393720" class="wa-float" target="_blank">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
- 
+
     <div id="backToTop" onclick="scrollToTop()">
         <i class="fa-solid fa-chevron-up"></i>
     </div>
- 
-    <header id="main-header" class="fixed top-0 w-full z-50 transition-all duration-300 border-b border-transparent bg-white">
+
+    <header id="main-header" class="fixed top-0 w-full z-50 transition-all duration-300 border-b border-transparent bg-transparent">
         <div class="max-w-7xl mx-auto px-6 py-4 grid grid-cols-3 items-center">
             <div class="flex justify-start">
               <button id="menu-open" class="text-purple-900 text-2xl p-2 hover:bg-gray-100 rounded-lg transition focus:outline-none">
                   <i class="fa-solid fa-bars-staggered"></i>
               </button>
           </div>
- 
+
             <div class="flex flex-col items-center text-center">
                <img src="logo1.png" alt="Logo" class="w-12 h-12 object-contain">
               <span class="block text-lg font-extrabold tracking-widest text-purple-900 uppercase italic leading-none mt-1">ICE KULCOOL</span>
               <span data-key="header-tagline" class="hidden sm:block text-[8px] tracking-[0.2em] text-gray-400 uppercase leading-none">Premium Chocolate Treats</span>
           </div>
- 
+
             <div class="flex justify-end items-center space-x-6">
               <button id="search-open" class="text-purple-900 hover:text-purple-600 transition">
                   <i class="fa-solid fa-magnifying-glass text-lg"></i>
@@ -200,7 +200,7 @@ header {
           </div>
         </div>
     </header>
- 
+
     <div id="search-overlay" class="fixed inset-0 bg-black/60 z-[120] hidden flex items-center justify-center p-6 modal-transition opacity-0">
         <div class="bg-white w-full max-w-lg rounded-3xl shadow-2xl p-8 relative transform scale-95 transition-all">
             <button id="search-close" class="absolute top-4 right-6 text-gray-400 hover:text-purple-600 text-2xl"><i class="fa-solid fa-xmark"></i></button>
@@ -211,7 +211,7 @@ header {
           </div>
         </div>
     </div>
- 
+
     <div id="lang-overlay" class="fixed inset-0 bg-black/60 z-[110] hidden flex items-center justify-center p-4">
         <div id="lang-modal" class="bg-white w-full max-w-sm rounded-2xl shadow-2xl overflow-hidden transform scale-90 opacity-0 transition-all duration-300">
             <div class="p-6 border-b flex justify-between items-center">
@@ -252,9 +252,9 @@ header {
           </div>
         </div>
     </div>
- 
+
     <div id="bg-overlay" class="fixed inset-0 bg-black/50 z-[60] hidden opacity-0 transition-opacity duration-300"></div>
- 
+
     <div id="sidebar-menu" class="fixed top-0 left-0 h-full w-72 bg-white z-[100] transform -translate-x-full transition-transform duration-300 ease-in-out shadow-2xl">
         <div class="flex flex-col h-full p-6">
             <div class="flex justify-between items-center mb-8 border-b pb-4">
@@ -275,7 +275,7 @@ header {
           </nav>
         </div>
     </div>
- 
+
     <section id="home" class="hero-bg flex items-center justify-center text-center text-white px-4">
         <div class="max-w-3xl">
             <h1 data-key="hero-title" class="text-4xl md:text-6xl font-extrabold mb-6 uppercase leading-tight">The Art of Melting Chocolate</h1>
@@ -283,7 +283,7 @@ header {
             <a href="#menu" data-key="hero-btn" class="btn-elegant">Explore Products</a>
         </div>
     </section>
- 
+
     <section id="about" class="py-24 px-6 bg-gray-50">
         <div class="max-w-5xl mx-auto text-center">
             <h2 data-key="about-tag" class="text-sm font-bold text-purple-600 tracking-[0.4em] uppercase mb-4">Quality First</h2>
@@ -294,7 +294,7 @@ header {
             </p>
         </div>
     </section>
- 
+
     <section id="menu" class="py-24 px-6">
         <div class="max-w-7xl mx-auto">
             <div class="flex flex-col md:flex-row justify-between items-end mb-16 border-b pb-8">
@@ -303,7 +303,7 @@ header {
                   <h3 data-key="menu-title" class="text-4xl font-extrabold text-gray-900 uppercase">Varian Paket Kami</h3>
               </div>
           </div>
- 
+
             <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
                <div class="product-card bg-white p-8 group">
                   <div class="w-full h-48 bg-gray-100 mb-6 flex items-center justify-center rounded-xl overflow-hidden">
@@ -342,7 +342,7 @@ header {
           </div>
         </div>
     </section>
- 
+
     <footer class="bg-gray-900 text-white px-6">
         <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-16 text-center md:text-left">
            <div>
@@ -367,18 +367,10 @@ header {
           </div>
         </div>
     </footer>
- 
+
     <script>
         const header = document.getElementById('main-header');
-     
-       window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-               header.classList.add('header-scrolled');
-            } else {
-               header.classList.remove('header-scrolled');
-            }
-        });
- 
+
         const languages = {
             'ID': {
               'header-tagline': 'Camilan Cokelat Premium',
@@ -521,40 +513,40 @@ header {
               'footer-contact-title': 'معلومات الاتصال'
             }
         };
- 
+
         function buyProduct(name, price) {
             const phone = "6285703393720";
             const message = `Halo Mincool, saya ingin memesan produk: *${name}* dengan *Harga:* ${price}. Terima kasih!`;
             const encoded = encodeURIComponent(message);
            window.open(`https://wa.me/${phone}?text=${encoded}`, '_blank');
         }
- 
+
         function setLanguage(lang) {
            document.getElementById('current-lang').innerText = lang;
            document.documentElement.dir = (lang === 'AR') ? 'rtl' : 'ltr';
-            
+
             const elements = document.querySelectorAll('[data-key]');
            elements.forEach(el => {
                 const key = el.getAttribute('data-key');
-                if (languages[lang][key]) { 
-                   el.innerText = languages[lang][key]; 
+                if (languages[lang][key]) {
+                   el.innerText = languages[lang][key];
                 }
             });
            closeLang();
         }
- 
+
         const menuOpen = document.getElementById('menu-open');
         const menuClose = document.getElementById('menu-close');
         const sidebar = document.getElementById('sidebar-menu');
         const bgOverlay = document.getElementById('bg-overlay');
-        
+
        menuOpen.onclick = () => {
            sidebar.classList.remove('-translate-x-full');
            bgOverlay.classList.remove('hidden');
            setTimeout(() => bgOverlay.classList.add('opacity-100'), 10);
            document.body.classList.add('menu-open');
         };
- 
+
         const closeSidebar = () => {
            sidebar.classList.add('-translate-x-full');
            bgOverlay.classList.remove('opacity-100');
@@ -565,50 +557,61 @@ header {
         };
        menuClose.onclick = closeSidebar;
        bgOverlay.onclick = closeSidebar;
- 
+
         const langOpen = document.getElementById('lang-open');
         const langClose = document.getElementById('lang-close');
         const langOverlay = document.getElementById('lang-overlay');
         const langModal = document.getElementById('lang-modal');
- 
+
        langOpen.onclick = () => {
            langOverlay.classList.remove('hidden');
            setTimeout(() => langModal.classList.remove('scale-90', 'opacity-0'), 10);
         };
- 
+
         const closeLang = () => {
            langModal.classList.add('scale-90', 'opacity-0');
            setTimeout(() => langOverlay.classList.add('hidden'), 300);
         };
        langClose.onclick = closeLang;
- 
+       langOverlay.onclick = (e) => { if (e.target === langOverlay) closeLang(); };
+
         const searchOpen = document.getElementById('search-open');
         const searchClose = document.getElementById('search-close');
         const searchOverlay = document.getElementById('search-overlay');
         const searchInput = document.getElementById('search-input');
         const btnSearch = document.getElementById('btn-search-trigger');
- 
+
         const doSearch = () => {
             const keyword = searchInput.value.toLowerCase().trim();
             if (keyword === 'galeri' || keyword === 'gallery') window.location.href = 'galeri.html';
             else if (['harga', 'price', 'menu'].includes(keyword)) { window.location.href = '#menu'; closeSearch(); }
             else if (['tentang', 'about'].includes(keyword)) { window.location.href = '#about'; closeSearch(); }
         };
- 
+
        searchOpen.onclick = () => {
            searchOverlay.classList.remove('hidden');
            setTimeout(() => searchOverlay.classList.remove('opacity-0'), 10);
            searchInput.focus();
         };
- 
+
         const closeSearch = () => {
            searchOverlay.classList.add('opacity-0');
            setTimeout(() => searchOverlay.classList.add('hidden'), 300);
         };
        searchClose.onclick = closeSearch;
+       searchOverlay.onclick = (e) => { if (e.target === searchOverlay) closeSearch(); };
        btnSearch.onclick = doSearch;
        searchInput.onkeypress = (e) => { if(e.key === 'Enter') doSearch(); };
- 
+
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeSearch();
+                closeLang();
+                closeSidebar();
+            }
+        });
+
         // --- BACK TO TOP ---
         const backToTopBtn = document.getElementById('backToTop');
        window.onscroll = () => {
@@ -617,14 +620,14 @@ header {
             } else {
                backToTopBtn.classList.remove('show');
             }
- 
+
             if (window.scrollY > 50) {
                header.classList.add('header-scrolled');
             } else {
                header.classList.remove('header-scrolled');
             }
         };
- 
+
         function scrollToTop() {
            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
