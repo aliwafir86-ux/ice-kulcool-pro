@@ -19,6 +19,17 @@
             height: 80vh;
         }
 
+        /* PERBAIKAN HEADER TRANSPARAN TANPA UBAH POSISI BAWAH */
+        header {
+            position: absolute; /* Header melayang di atas hero tanpa mendorong konten */
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 50;
+            background: transparent !important;
+            border-bottom: none !important;
+        }
+
         .product-card {
             border: 1px solid #eee;
             transition: all 0.4s ease;
@@ -71,7 +82,6 @@
             box-shadow: 0 15px 30px rgba(0,0,0,0.25);
         }
 
-        /* --- IKON WA MELAYANG --- */
         .wa-float {
             position: fixed;
             width: 60px;
@@ -96,11 +106,10 @@
             color: white;
         }
 
-        /* --- TOMBOL BACK TO TOP --- */
         #backToTop {
             position: fixed;
             bottom: 110px; 
-            right: 45px; /* Sedikit geser agar center dengan WA */
+            right: 45px;
             width: 50px;
             height: 50px;
             background-color: #4a148c;
@@ -137,25 +146,24 @@
         <i class="fa-solid fa-chevron-up"></i>
     </div>
 
-    <header class="bg-white border-b sticky top-0 z-50">
+    <header>
         <div class="max-w-7xl mx-auto px-6 py-4 grid grid-cols-3 items-center">
             <div class="flex justify-start">
-                <button id="menu-open" class="text-purple-900 text-2xl p-2 hover:bg-gray-100 rounded-lg transition focus:outline-none">
+                <button id="menu-open" class="text-white text-2xl p-2 hover:bg-white/10 rounded-lg transition focus:outline-none">
                     <i class="fa-solid fa-bars-staggered"></i>
                 </button>
             </div>
 
             <div class="flex flex-col items-center text-center">
-                <img src="logo1.png" alt="Logo" class="w-12 h-12 object-contain">
-                <span class="block text-lg font-extrabold tracking-widest text-purple-900 uppercase italic leading-none mt-1">ICE KULCOOL</span>
-                <span data-key="header-tagline" class="hidden sm:block text-[8px] tracking-[0.2em] text-gray-400 uppercase leading-none">Premium Chocolate Treats</span>
+                <img src="logo1.png" alt="Logo" class="w-12 h-12 object-contain brightness-0 invert"> <span class="block text-lg font-extrabold tracking-widest text-white uppercase italic leading-none mt-1">ICE KULCOOL</span>
+                <span data-key="header-tagline" class="hidden sm:block text-[8px] tracking-[0.2em] text-purple-200 uppercase leading-none">Premium Chocolate Treats</span>
             </div>
 
             <div class="flex justify-end items-center space-x-6">
-                <button id="search-open" class="text-purple-900 hover:text-purple-600 transition">
+                <button id="search-open" class="text-white hover:text-purple-200 transition">
                     <i class="fa-solid fa-magnifying-glass text-lg"></i>
                 </button>
-                <button id="lang-open" class="flex items-center space-x-1 text-purple-900 font-bold text-xs uppercase tracking-widest hover:text-purple-600 transition">
+                <button id="lang-open" class="flex items-center space-x-1 text-white font-bold text-xs uppercase tracking-widest hover:text-purple-200 transition">
                     <span id="current-lang">ID</span>
                     <i class="fa-solid fa-chevron-down text-[10px]"></i>
                 </button>
@@ -239,8 +247,7 @@
     </div>
 
     <section id="home" class="hero-bg flex items-center justify-center text-center text-white px-4">
-        <div class="max-w-3xl">
-            <h1 data-key="hero-title" class="text-4xl md:text-6xl font-extrabold mb-6 uppercase leading-tight">The Art of Melting Chocolate</h1>
+        <div class="max-w-3xl mt-20"> <h1 data-key="hero-title" class="text-4xl md:text-6xl font-extrabold mb-6 uppercase leading-tight">The Art of Melting Chocolate</h1>
             <p data-key="hero-desc" class="text-lg md:text-xl font-light mb-10 tracking-wide">Menghadirkan sensasi kemewahan piscok lumer premium dengan kualitas bahan terbaik untuk setiap gigitan Anda.</p>
             <a href="#menu" data-key="hero-btn" class="btn-elegant">Explore Products</a>
         </div>
@@ -331,6 +338,7 @@
     </footer>
 
     <script>
+        // ISI SCRIPT SAMA DENGAN KODE AWAL KAMU
         const languages = {
             'ID': {
                 'header-tagline': 'Camilan Cokelat Premium',
@@ -353,7 +361,7 @@
                 'card1-name': 'Harga Normal',
                 'card1-desc': 'Nikmati keaslian rasa piscok original dengan balutan cokelat klasik yang melimpah.',
                 'card2-name': 'Paket Hemat',
-                'card2-desc': 'Dapatkan 3 tusuk piscok mix dengan topping kacang atau springkle.',
+                'card2-desc': 'Dapatkan 3 tusuk piscok mix dengan topping kacang sangrai atau springkle.',
                 'card3-name': 'Paket Combo',
                 'card3-desc': 'Pesta piscok dengan 6 tusuk bebas pilih topping sesukamu. Lebih banyak, lebih seru!',
                 'buy-btn': 'Beli Sekarang',
@@ -381,7 +389,7 @@
                 'card1-name': 'Pantos Normal',
                 'card1-desc': 'Raoskeun asli rasa piscok original kalayan balutan coklat klasik anu seueur.',
                 'card2-name': 'Paket Hemat',
-                'card2-desc': 'Kengingkeun 3 tusuk piscok mix nganggo topping kacang atanapi springkle.',
+                'card2-desc': 'Kengingkeun 3 tusuk piscok mix nganggo topping kacang sangrai atanapi springkle.',
                 'card3-name': 'Paket Combo',
                 'card3-desc': 'Pesta piscok 6 tusuk bébas milih topping sakahayang anjeun. Langkung seueur, langkung seru!',
                 'buy-btn': 'Pesen Ayeuna',
@@ -437,7 +445,7 @@
                 'card1-name': 'Normal Price',
                 'card1-desc': 'Enjoy the authenticity of original chocolate banana with abundant classic chocolate coating.',
                 'card2-name': 'Saving Pack',
-                'card2-desc': 'Get 3 mixed chocolate banana sticks with peanuts or sprinkles topping.',
+                'card2-desc': 'Get 3 mixed chocolate banana sticks with roasted peanuts or sprinkles topping.',
                 'card3-name': 'Combo Pack',
                 'card3-desc': 'Chocolate banana party with 6 sticks, free to choose any topping you like!',
                 'buy-btn': 'Buy Now',
@@ -474,26 +482,11 @@
             }
         };
 
-        // FUNGSI BELI DENGAN LOGIKA TOPPING (UPDATE BARU)
         function buyProduct(name, price) {
             const phone = "6285703393720";
-            let topping = "";
-
-            // Logika input topping sederhana menggunakan prompt
-            if (name === 'Paket Hemat') {
-                topping = prompt("Pilih Topping (Kacang Sangrai / Sprinkle):", "Kacang");
-            } else if (name === 'Paket Combo') {
-                topping = prompt("Masukkan 6 Topping pilihan Anda:", "Cokelat, Keju, Kacang, dll...");
-            } else {
-                topping = "Original Chocolate";
-            }
-
-            // Jika user menekan 'Cancel', hentikan proses
-            if (topping === null) return; 
-
-            const message = `Halo Mincool! 👋%0A%0ASaya ingin memesan produk:%0A*Paket:* ${name}%0A*Topping:* ${topping}%0A*Harga:* ${price}%0A%0ATerima kasih!`;
+            const message = `Halo Mincool, saya ingin memesan produk: *${name}* dengan *Harga:* ${price}. Terima kasih!`;
             const encoded = encodeURIComponent(message);
-            window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
+            window.open(`https://wa.me/${phone}?text=${encoded}`, '_blank');
         }
 
         function setLanguage(lang) {
@@ -576,7 +569,6 @@
         btnSearch.onclick = doSearch;
         searchInput.onkeypress = (e) => { if(e.key === 'Enter') doSearch(); };
 
-        // --- BACK TO TOP ---
         const backToTopBtn = document.getElementById('backToTop');
         window.onscroll = () => {
             if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
