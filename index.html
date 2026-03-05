@@ -474,11 +474,26 @@
             }
         };
 
+        // FUNGSI BELI DENGAN LOGIKA TOPPING (UPDATE BARU)
         function buyProduct(name, price) {
             const phone = "6285703393720";
-            const message = `Halo Mincool, saya ingin memesan produk: *${name}* dengan *Harga:* ${price}. Terima kasih!`;
+            let topping = "";
+
+            // Logika input topping sederhana menggunakan prompt
+            if (name === 'Paket Hemat') {
+                topping = prompt("Pilih Topping (Kacang Sangrai / Sprinkle):", "Kacang Sangrai");
+            } else if (name === 'Paket Combo') {
+                topping = prompt("Masukkan 6 Topping pilihan Anda:", "Cokelat, Keju, Kacang, dll...");
+            } else {
+                topping = "Original Chocolate";
+            }
+
+            // Jika user menekan 'Cancel', hentikan proses
+            if (topping === null) return; 
+
+            const message = `Halo Mincool! 👋%0A%0ASaya ingin memesan produk:%0A*Paket:* ${name}%0A*Topping:* ${topping}%0A*Harga:* ${price}%0A%0ATerima kasih!`;
             const encoded = encodeURIComponent(message);
-            window.open(`https://wa.me/${phone}?text=${encoded}`, '_blank');
+            window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
         }
 
         function setLanguage(lang) {
