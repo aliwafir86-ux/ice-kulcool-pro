@@ -9,43 +9,55 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        * { font-family: 'Montserrat', sans-serif; }
+        /* FIX: Menghilangkan celah putih default browser */
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+            font-family: 'Montserrat', sans-serif; 
+        }
+        
         html { scroll-behavior: smooth; }
         
         /* --- HEADER TRANSPARAN --- */
         header {
             transition: all 0.3s ease;
-            background-color: transparent !important; /* Awal transparan */
+            background-color: transparent !important; 
             border-bottom: 1px solid rgba(255,255,255,0.1) !important;
+            position: absolute; /* Mengubah dari sticky ke absolute agar nempel di atas hero tanpa celah */
+            top: 0;
+            left: 0;
+            width: 100%;
         }
 
         /* Saat di scroll */
         header.scrolled {
+            position: fixed; /* Berubah jadi fixed saat scroll */
             background-color: white !important;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             border-bottom: none !important;
         }
 
-        /* Perubahan warna teks saat scroll */
         header.scrolled .text-purple-900 {
             color: #4a148c !important;
         }
         
-        /* Default teks header saat transparan (putih agar terbaca di atas hero) */
         header:not(.scrolled) .text-purple-900,
         header:not(.scrolled) #current-lang {
             color: white !important;
         }
 
-        /* Logo tetap asli tanpa filter */
         img { filter: none !important; }
 
         .hero-bg {
             background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('piscok2.png');
             background-size: cover;
             background-position: center;
-            height: 80vh;
-            margin-top: -85px; /* Menarik hero ke atas header */
+            height: 100vh; /* Menggunakan 100vh agar layar penuh */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 0; /* Margin dinetralkan */
         }
 
         .product-card {
@@ -148,10 +160,6 @@
             opacity: 1;
             visibility: visible;
         }
-        #backToTop:hover {
-            background-color: #7b1fa2;
-            transform: translateY(-5px);
-        }
     </style>
 </head>
 <body class="bg-white text-gray-900">
@@ -164,7 +172,7 @@
         <i class="fa-solid fa-chevron-up"></i>
     </div>
 
-    <header id="navbar" class="sticky top-0 z-50">
+    <header id="navbar" class="z-50">
         <div class="max-w-7xl mx-auto px-6 py-4 grid grid-cols-3 items-center">
             <div class="flex justify-start">
                 <button id="menu-open" class="text-purple-900 text-2xl p-2 hover:bg-gray-100/20 rounded-lg transition focus:outline-none">
@@ -366,19 +374,16 @@
     </footer>
 
     <script>
-        // SCRIPT TAMBAHAN UNTUK HEADER TRANSPARAN
         window.onscroll = function() {
             const navbar = document.getElementById("navbar");
             const backToTopBtn = document.getElementById('backToTop');
             
-            // Logika Header
             if (window.scrollY > 50) {
                 navbar.classList.add("scrolled");
             } else {
                 navbar.classList.remove("scrolled");
             }
 
-            // Logika Back to Top
             if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
                 backToTopBtn.classList.add('show');
             } else {
@@ -518,7 +523,7 @@
                 'menu-tag': 'قائمتنا',
                 'menu-title': 'خيارات الباقات لدينا',
                 'card1-name': 'السعر العادي',
-                'card1-desc': 'استمتع بأصالة طعم الموز بالشوكولاتة الأصلي dengan تغطية غنية من الشوكولاتة الكلاسيكية.',
+                'card1-desc': 'استمتع بأصالة طعم الموز بالشوكولاتة الأصلي تغطية غنية من الشوكولاتة الكلاسيكية.',
                 'card2-name': 'باقة التوفير',
                 'card2-desc': 'احصل على 3 قطع من الموز بالشوكولاتة المشكلة مع الفول السوداني أو السبرينكلز.',
                 'card3-name': 'باقة كومبو',
@@ -532,17 +537,10 @@
         function buyProduct(name, price) {
             const phone = "6285703393720";
             let topping = "";
-
-            if (name === 'Paket Hemat') {
-                topping = prompt("Pilih Topping (Kacang Sangrai / Sprinkle):", "Kacang");
-            } else if (name === 'Paket Combo') {
-                topping = prompt("Masukkan 6 Topping pilihan Anda:", "Cokelat, Keju, Kacang, dll...");
-            } else {
-                topping = "Original Chocolate";
-            }
-
+            if (name === 'Paket Hemat') topping = prompt("Pilih Topping (Kacang Sangrai / Sprinkle):", "Kacang");
+            else if (name === 'Paket Combo') topping = prompt("Masukkan 6 Topping pilihan Anda:", "Cokelat, Keju, Kacang, dll...");
+            else topping = "Original Chocolate";
             if (topping === null) return; 
-
             const message = `Halo Mincool! 👋%0A%0ASaya ingin memesan produk:%0A*Paket:* ${name}%0A*Topping:* ${topping}%0A*Harga:* ${price}%0A%0ATerima kasih!`;
             window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
         }
@@ -550,21 +548,16 @@
         function setLanguage(lang) {
             document.getElementById('current-lang').innerText = lang;
             document.documentElement.dir = (lang === 'AR') ? 'rtl' : 'ltr';
-            
             const elements = document.querySelectorAll('[data-key]');
             elements.forEach(el => {
                 const key = el.getAttribute('data-key');
-                if (languages[lang][key]) { 
-                    el.innerText = languages[lang][key]; 
-                }
+                if (languages[lang][key]) el.innerText = languages[lang][key]; 
             });
             closeLang();
         }
 
-        const menuOpen = document.getElementById('menu-open');
-        const menuClose = document.getElementById('menu-close');
-        const sidebar = document.getElementById('sidebar-menu');
-        const bgOverlay = document.getElementById('bg-overlay');
+        const menuOpen = document.getElementById('menu-open'), menuClose = document.getElementById('menu-close'),
+              sidebar = document.getElementById('sidebar-menu'), bgOverlay = document.getElementById('bg-overlay');
         
         menuOpen.onclick = () => {
             sidebar.classList.remove('-translate-x-full');
@@ -572,39 +565,22 @@
             setTimeout(() => bgOverlay.classList.add('opacity-100'), 10);
             document.body.classList.add('menu-open');
         };
-
         const closeSidebar = () => {
             sidebar.classList.add('-translate-x-full');
             bgOverlay.classList.remove('opacity-100');
-            setTimeout(() => {
-                bgOverlay.classList.add('hidden');
-                document.body.classList.remove('menu-open');
-            }, 300);
+            setTimeout(() => { bgOverlay.classList.add('hidden'); document.body.classList.remove('menu-open'); }, 300);
         };
-        menuClose.onclick = closeSidebar;
-        bgOverlay.onclick = closeSidebar;
+        menuClose.onclick = closeSidebar; bgOverlay.onclick = closeSidebar;
 
-        const langOpen = document.getElementById('lang-open');
-        const langClose = document.getElementById('lang-close');
-        const langOverlay = document.getElementById('lang-overlay');
-        const langModal = document.getElementById('lang-modal');
-
-        langOpen.onclick = () => {
-            langOverlay.classList.remove('hidden');
-            setTimeout(() => langModal.classList.remove('scale-90', 'opacity-0'), 10);
-        };
-
-        const closeLang = () => {
-            langModal.classList.add('scale-90', 'opacity-0');
-            setTimeout(() => langOverlay.classList.add('hidden'), 300);
-        };
+        const langOpen = document.getElementById('lang-open'), langClose = document.getElementById('lang-close'),
+              langOverlay = document.getElementById('lang-overlay'), langModal = document.getElementById('lang-modal');
+        langOpen.onclick = () => { langOverlay.classList.remove('hidden'); setTimeout(() => langModal.classList.remove('scale-90', 'opacity-0'), 10); };
+        const closeLang = () => { langModal.classList.add('scale-90', 'opacity-0'); setTimeout(() => langOverlay.classList.add('hidden'), 300); };
         langClose.onclick = closeLang;
 
-        const searchOpen = document.getElementById('search-open');
-        const searchClose = document.getElementById('search-close');
-        const searchOverlay = document.getElementById('search-overlay');
-        const searchInput = document.getElementById('search-input');
-        const btnSearch = document.getElementById('btn-search-trigger');
+        const searchOpen = document.getElementById('search-open'), searchClose = document.getElementById('search-close'),
+              searchOverlay = document.getElementById('search-overlay'), searchInput = document.getElementById('search-input'),
+              btnSearch = document.getElementById('btn-search-trigger');
 
         const doSearch = () => {
             const keyword = searchInput.value.toLowerCase().trim();
@@ -613,23 +589,11 @@
             else if (['tentang', 'about'].includes(keyword)) { window.location.href = '#about'; closeSearch(); }
         };
 
-        searchOpen.onclick = () => {
-            searchOverlay.classList.remove('hidden');
-            setTimeout(() => searchOverlay.classList.remove('opacity-0'), 10);
-            searchInput.focus();
-        };
+        searchOpen.onclick = () => { searchOverlay.classList.remove('hidden'); setTimeout(() => searchOverlay.classList.remove('opacity-0'), 10); searchInput.focus(); };
+        const closeSearch = () => { searchOverlay.classList.add('opacity-0'); setTimeout(() => searchOverlay.classList.add('hidden'), 300); };
+        searchClose.onclick = closeSearch; btnSearch.onclick = doSearch; searchInput.onkeypress = (e) => { if(e.key === 'Enter') doSearch(); };
 
-        const closeSearch = () => {
-            searchOverlay.classList.add('opacity-0');
-            setTimeout(() => searchOverlay.classList.add('hidden'), 300);
-        };
-        searchClose.onclick = closeSearch;
-        btnSearch.onclick = doSearch;
-        searchInput.onkeypress = (e) => { if(e.key === 'Enter') doSearch(); };
-
-        function scrollToTop() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
+        function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
     </script>
 </body>
 </html>
