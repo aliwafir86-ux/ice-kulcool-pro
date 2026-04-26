@@ -19,16 +19,18 @@
         
         html { scroll-behavior: smooth; }
         
-        /* --- HEADER TRANSPARAN --- */
-        header {
-            transition: all 0.3s ease;
-            background-color: transparent !important; 
-            border-bottom: 1px solid rgba(255,255,255,0.1) !important;
-            position: absolute; /* Mengubah dari sticky ke absolute agar nempel di atas hero tanpa celah */
-            top: 0;
-            left: 0;
-            width: 100%;
-        }
+       /* --- HEADER TRANSPARAN --- */
+       header {
+           transition: all 0.3s ease;
+           background-color: transparent !important; 
+           border-bottom: 1px solid rgba(255,255,255,0.1) !important;
+           position: absolute;
+           top: 0;
+           left: 0;
+           width: 100%;
+       /* TAMBAHKAN BARIS DI BAWAH INI */
+       z-index: 100; 
+       }
 
         /* Saat di scroll */
         header.scrolled {
