@@ -24,11 +24,11 @@
             transition: all 0.3s ease;
             background-color: transparent !important; 
             border-bottom: 1px solid rgba(255,255,255,0.1) !important;
-            position: absolute; /* Mengubah dari sticky ke absolute agar nempel di atas hero tanpa celah */
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            z-index: 100
+            z-index: 100; /* FIX: Supaya berada di lapisan paling depan dan bisa diklik */
         }
 
         /* Saat di scroll */
