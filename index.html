@@ -19,7 +19,7 @@
         
         html { scroll-behavior: smooth; }
         
-        /* --- HEADER TRANSPARAN --- */
+       /* --- HEADER TRANSPARAN --- */
         header {
             transition: all 0.3s ease;
             background-color: transparent !important; 
@@ -31,16 +31,28 @@
             z-index: 100; /* FIX: Supaya berada di lapisan paling depan dan bisa diklik */
         }
 
-        /* Saat di scroll */
+        /* Warna teks & ikon jadi putih saat di atas Hero agar kontras */
+        header:not(.scrolled) #menu-open,
+        header:not(.scrolled) #search-open,
+        header:not(.scrolled) #current-lang,
+        header:not(.scrolled) .text-purple-900 {
+            color: white !important;
+        }
+
+        /* Saat di scroll - Berubah jadi putih bersih */
         header.scrolled {
-            position: fixed; /* Berubah jadi fixed saat scroll */
+            position: fixed;
             background-color: white !important;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             border-bottom: none !important;
+            z-index: 100;
         }
 
+        header.scrolled #menu-open,
+        header.scrolled #search-open,
+        header.scrolled #current-lang,
         header.scrolled .text-purple-900 {
-            color: #4a148c !important;
+            color: #4a148c !important; /* Kembali ke warna ungu saat scroll down */
         }
         
         header:not(.scrolled) .text-purple-900,
