@@ -568,17 +568,27 @@
             window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
         }
 
-        function setLanguage(lang) {
-            document.getElementById('current-lang').innerText = lang;
-            document.documentElement.dir = (lang === 'AR') ? 'rtl' : 'ltr';
-            const elements = document.querySelectorAll('[data-key]');
-            elements.forEach(el => {
-                const key = el.getAttribute('data-key');
-                if (languages[lang][key]) el.innerText = languages[lang][key]; 
-            });
-            closeLang();
-        }
+       function setLanguage(lang) {
+    // 1. Simpan pilihan bahasa ke storage browser
+    localStorage.setItem('selectedLanguage', lang); 
 
+    document.getElementById('current-lang').innerText = lang;
+    document.documentElement.dir = (lang === 'AR') ? 'rtl' : 'ltr';
+    
+    const elements = document.querySelectorAll('[data-key]');
+    elements.forEach(el => {
+        const key = el.getAttribute('data-key');
+        if (languages[lang][key]) el.innerText = languages[lang][key];
+    });
+    
+    closeLang();
+}
+
+// Baru di bawah sini window.onload-nya
+window.onload = () => {
+    const savedLang = localStorage.getItem('selectedLanguage') || 'ID';
+    setLanguage(savedLang);
+};
         const menuOpen = document.getElementById('menu-open'), menuClose = document.getElementById('menu-close'),
               sidebar = document.getElementById('sidebar-menu'), bgOverlay = document.getElementById('bg-overlay');
         
