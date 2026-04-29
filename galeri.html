@@ -132,10 +132,15 @@
     window.onload = applyLanguage;
 </script>
 
-<a href="index.html" class="fixed bottom-6 right-6 z-[999] bg-purple-700 text-white w-14 h-14 rounded-full shadow-[0_10px_25px_rgba(126,34,206,0.4)] flex items-center justify-center hover:bg-purple-800 hover:scale-110 active:scale-95 transition-all duration-300 border-2 border-white/50 backdrop-blur-sm">
-    <i class="fa-solid fa-house text-xl"></i>
-    <span class="sr-only" data-key="home-btn">BERANDA</span>
-</a>
+<a href="index.html" class="fixed bottom-8 right-8 z-[999] bg-white text-purple-700 w-14 h-14 rounded-2xl shadow-[0_20px_50px_rgba(126,34,206,0.3)] flex items-center justify-center border border-purple-100 hover:bg-purple-700 hover:text-white hover:-translate-y-2 transition-all duration-300 group">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+        </svg>
+        
+        <span data-key="home-btn" class="absolute right-16 bg-purple-900 text-white text-[10px] px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity uppercase tracking-widest font-bold pointer-events-none shadow-xl">
+            BERANDA
+        </span>
+    </a>
     
 </body>
 </html>
