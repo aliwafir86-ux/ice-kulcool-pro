@@ -80,37 +80,37 @@
 
 <script>
     const languages = {
-        'ID': {
-            'gallery-title': 'GALERI PRODUK',
-            'gallery-hero': 'Koleksi Lumer Kami',
-            'back-btn': 'KEMBALI',
-            'coming-soon': 'Segera Hadir...'
-        },
-        'SUN': {
-            'gallery-title': 'GALERI PRODUK',
-            'gallery-hero': 'Kempelan Lumer Urang',
-            'back-btn': 'MULANG',
-            'coming-soon': 'Sakedap deui...'
-        },
-        'MDR': {
-            'gallery-title': 'GALERI PRODUK',
-            'gallery-hero': 'Kompolan Lomer kaulâ sadâjâh',
-            'back-btn': 'ABHALI',
-            'coming-soon': 'Bhâkal dâtâng...'
-        },
-        'ENG': {
-            'gallery-title': 'PRODUCT GALLERY',
-            'gallery-hero': 'Our Melty Collection',
-            'back-btn': 'BACK',
-            'coming-soon': 'Coming Soon...'
-        },
-        'AR': {
-            'gallery-title': 'معرض المنتجات',
-            'gallery-hero': 'مجموعتنا الذائبة',
-            'back-btn': 'يعود',
-            'coming-soon': 'قريباً...'
-        }
-    };
+    'ID': { 
+        'gallery-title': 'GALERI PRODUK', 
+        'gallery-hero': 'Koleksi Lumer Kami', 
+        'coming-soon': 'Segera Hadir...',
+        'home-btn': 'BERANDA' 
+    },
+    'SUN': { 
+        'gallery-title': 'GALERI PRODUK', 
+        'gallery-hero': 'Kempelan Lumer Urang', 
+        'coming-soon': 'Sakedap deui...',
+        'home-btn': 'BUMI' 
+    },
+    'MDR': { 
+        'gallery-title': 'GALERI PRODUK', 
+        'gallery-hero': 'Kompolan Lomer kaulâ sadâjâh', 
+        'coming-soon': 'Bhâkal dâtâng...',
+        'home-btn': 'ROMA' 
+    },
+    'ENG': { 
+        'gallery-title': 'PRODUCT GALLERY', 
+        'gallery-hero': 'Our Melty Collection', 
+        'coming-soon': 'Coming Soon...',
+        'home-btn': 'HOME' 
+    },
+    'AR': { 
+        'gallery-title': 'معرض المنتجات', 
+        'gallery-hero': 'مجموعتنا الذائبة', 
+        'coming-soon': 'قريباً...',
+        'home-btn': 'رئيسي' 
+    }
+};
 
     function applyLanguage() {
         // Ambil bahasa dari storage, jika tidak ada default ke 'ID'
@@ -132,9 +132,9 @@
     window.onload = applyLanguage;
 </script>
 
-<a href="index.html" data-key="home-btn" title="Beranda" ...>
-   class="fixed bottom-6 right-6 z-[999] bg-purple-700 text-white w-14 h-14 rounded-full shadow-[0_10px_25px_rgba(126,34,206,0.4)] flex items-center justify-center hover:bg-purple-800 hover:scale-110 active:scale-95 transition-all duration-300 border-2 border-white/50 backdrop-blur-sm">
+<a href="index.html" class="fixed bottom-6 right-6 z-[999] bg-purple-700 text-white w-14 h-14 rounded-full shadow-[0_10px_25px_rgba(126,34,206,0.4)] flex items-center justify-center hover:bg-purple-800 hover:scale-110 active:scale-95 transition-all duration-300 border-2 border-white/50 backdrop-blur-sm">
     <i class="fa-solid fa-house text-xl"></i>
+    <span class="sr-only" data-key="home-btn">BERANDA</span>
 </a>
     
 </body>
