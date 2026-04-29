@@ -26,15 +26,12 @@
 <body class="text-gray-800">
 
     <nav class="bg-white shadow-md p-4 sticky top-0 z-50">
-        <div class="max-w-6xl mx-auto flex justify-between items-center">
-            <a href="index.html" class="text-purple-800 font-bold italic hover:text-purple-600 transition flex items-center gap-2">
-                <i class="fa-solid fa-arrow-left"></i> 
-                <span data-key="back-btn">KEMBALI</span>
-            </a>
-            <div data-key="gallery-title" class="font-bold text-purple-800 uppercase tracking-widest text-sm md:text-base">GALERI PRODUK</div>
-            <div class="w-10 md:block hidden"></div> 
+    <div class="max-w-6xl mx-auto flex justify-between items-center">
+        <div data-key="gallery-title" class="font-bold text-purple-800 uppercase tracking-widest text-sm md:text-base text-center w-full">
+            GALERI PRODUK
         </div>
-    </nav>
+    </div>
+</nav>
 
     <section class="max-w-6xl mx-auto py-12 px-4">
         <h1 data-key="gallery-hero" class="text-3xl font-extrabold text-center text-purple-900 mb-8 uppercase tracking-tight">Koleksi Lumer Kami</h1>
@@ -134,6 +131,11 @@
     // Jalankan fungsi saat halaman dibuka
     window.onload = applyLanguage;
 </script>
+
+<a href="index.html" data-key="home-btn" title="Beranda" ...>
+   class="fixed bottom-6 right-6 z-[999] bg-purple-700 text-white w-14 h-14 rounded-full shadow-[0_10px_25px_rgba(126,34,206,0.4)] flex items-center justify-center hover:bg-purple-800 hover:scale-110 active:scale-95 transition-all duration-300 border-2 border-white/50 backdrop-blur-sm">
+    <i class="fa-solid fa-house text-xl"></i>
+</a>
     
 </body>
 </html>
